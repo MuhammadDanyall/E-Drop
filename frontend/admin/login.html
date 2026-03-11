@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-DROP - Login</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../ecab.css"> <!-- Include ecab.css if it has general styles you want -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Specific styles for the login page, ensuring it blends with the overall theme */
+        body {
+            background-color: #1a1a1a; /* Dark background from your theme */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow: hidden; /* Prevent scroll on this isolated page */
+        }
+
+        .login-container {
+            background: var(--glass-bg); /* Use glass effect from your styles.css */
+            backdrop-filter: var(--blur);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--border-radius-lg);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            padding: 40px;
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            animation: slideDown 0.6s ease-out;
+        }
+
+        .login-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 107, 53, 0.05), transparent);
+            animation: gradientShift 8s ease infinite;
+            background-size: 200% 200%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .login-container h2 {
+            color: #ff6b35; /* Accent color from your theme */
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .login-container p.subtitle {
+            color: #ccc;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            color: #fff;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .form-group input[type="email"],
+        .form-group input[type="password"] {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            transition: var(--transition);
+        }
+
+        .form-group input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #ff6b35;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.2);
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: var(--accent-gradient); /* Use accent gradient from your theme */
+            color: #fff;
+            border: none;
+            padding: 1rem;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            margin-top: 1rem;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px) scale(1.01);
+            box-shadow: 0 10px 20px rgba(255, 107, 53, 0.4);
+        }
+
+        .signup-link {
+            margin-top: 25px;
+            font-size: 0.95rem;
+            color: #ccc;
+        }
+
+        .signup-link a {
+            color: #ff6b35;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .signup-link a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Welcome Back to E-DROP</h2>
+        <p class="subtitle">Log in to access your account</p>
+        <form action="/login" method="POST">
+            <div class="form-group">
+                <label for="email"><i class="fas fa-envelope"></i> Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="password"><i class="fas fa-lock"></i> Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+            <button type="submit" class="submit-btn">Login</button>
+        </form>
+        <div class="signup-link">
+            Don't have an account? <a href="signup.html">Sign Up Here</a>
+        </div>
+        </div>
+
+        <script>
+            (function(){
+                const params = new URLSearchParams(location.search);
+                const next = params.get('next') || '/';
+                const form = document.querySelector('form');
+                if(!form) return;
+
+                form.addEventListener('submit', function(e){
+                    e.preventDefault();
+                    const data = new FormData(form);
+
+                    fetch(form.action, {
+                        method: form.method || 'POST',
+                        body: data,
+                        credentials: 'same-origin',
+                        headers: { 'Accept': 'application/json' }
+                    }).then(async res => {
+                        const ct = res.headers.get('content-type') || '';
+                        if(res.redirected){
+                            // If server redirected, follow that redirect
+                            window.location.href = res.url;
+                            return;
+                        }
+
+                        if(ct.includes('application/json')){
+                            const json = await res.json();
+                            if(json && json.token){
+                                localStorage.setItem('authToken', json.token);
+                                window.location.href = next;
+                                return;
+                            } else if(json && json.success){
+                                localStorage.setItem('authToken', 'true');
+                                window.location.href = next;
+                                return;
+                            } else {
+                                alert(json.error || 'Login failed');
+                            }
+                        } else {
+                            const text = await res.text();
+                            if(res.ok || text.toLowerCase().includes('success')){
+                                localStorage.setItem('authToken', 'true');
+                                window.location.href = next;
+                            } else {
+                                // fallback to normal submit navigation
+                                form.submit();
+                            }
+                        }
+                    }).catch(err => {
+                        console.error('Login error', err);
+                        form.submit();
+                    });
+                });
+
+                // If a token was passed in the URL, set it and redirect
+                const tokenFromUrl = params.get('token');
+                if(tokenFromUrl){
+                    localStorage.setItem('authToken', tokenFromUrl);
+                    location.href = next;
+                }
+            })();
+        </script>
+    </body>
+    </html>

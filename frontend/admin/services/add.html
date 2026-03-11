@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Service - E-DROP Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .sidebar {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            min-height: 100vh;
+            color: white;
+            position: fixed;
+            width: 250px;
+            left: 0;
+            top: 0;
+            z-index: 100;
+        }
+        .sidebar .nav-link {
+            color: rgba(255,255,255,0.8);
+            padding: 12px 20px;
+            margin: 5px 15px;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        .sidebar .nav-link:hover,
+        .sidebar .nav-link.active {
+            background-color: rgba(255,107,53,0.2);
+            color: #ff6b35;
+        }
+        .sidebar .nav-link i {
+            width: 20px;
+            margin-right: 10px;
+        }
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+        .top-navbar {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 15px 30px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+        }
+        .content-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            padding: 30px;
+            margin-bottom: 20px;
+        }
+        .form-label {
+            font-weight: 600;
+            color: #495057;
+            margin-bottom: 8px;
+        }
+        .btn-save {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+        .btn-save:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(135deg, #218838 0%, #1aa085 100%);
+        }
+        .btn-cancel {
+            background: linear-gradient(135deg, #6c757d 0%, #5a6268 100%);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+        .btn-cancel:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(135deg, #545b62 0%, #495057 100%);
+        }
+        .icon-preview {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            margin: 0 auto 15px;
+            transition: transform 0.3s;
+        }
+        .icon-option {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #f8f9fa;
+            border: 2px solid #dee2e6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+            cursor: pointer;
+            margin: 5px;
+            transition: all 0.3s;
+        }
+        .icon-option:hover,
+        .icon-option.selected {
+            border-color: #ff6b35;
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            color: white;
+            transform: scale(1.1);
+        }
+        .status-toggle {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <nav class="sidebar">
+        <div class="p-3">
+            <h4 class="text-center mb-4">
+                <i class="fas fa-tachometer-alt me-2"></i>
+                E-DROP Admin
+            </h4>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="../../dashboard.html">
+                        <i class="fas fa-home"></i>Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <h6 class="text-uppercase text-muted px-3 mt-3 mb-2">Pages</h6>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../pages/home.html">
+                        <i class="fas fa-home"></i>Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../pages/about.html">
+                        <i class="fas fa-info-circle"></i>About
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../pages/services.html">
+                        <i class="fas fa-cogs"></i>Services
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../pages/contact.html">
+                        <i class="fas fa-envelope"></i>Contact
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <h6 class="text-uppercase text-muted px-3 mt-3 mb-2">AI Tools</h6>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../ai-content.html">
+                        <i class="fas fa-robot"></i>AI Assistant
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <h6 class="text-uppercase text-muted px-3 mt-3 mb-2">Management</h6>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="view.html">
+                        <i class="fas fa-list"></i>Services Management
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../../messages.html">
+                        <i class="fas fa-envelope-open"></i>Contact Messages
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../../media.html">
+                        <i class="fas fa-images"></i>Media
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../../profile.html">
+                        <i class="fas fa-user"></i>Profile
+                    </a>
+                </li>
+                <li class="nav-item mt-3">
+                    <a class="nav-link text-danger" href="#" onclick="logout()">
+                        <i class="fas fa-sign-out-alt"></i>Logout
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Top Navbar -->
+        <div class="top-navbar d-flex justify-content-between align-items-center">
+            <div>
+                <h4 class="mb-0">Add New Service</h4>
+                <small class="text-muted">Create a new service for your website</small>
+            </div>
+            <div class="d-flex align-items-center">
+                <i class="fas fa-user-circle fa-2x text-secondary me-2"></i>
+                <span>Admin</span>
+            </div>
+        </div>
+
+        <!-- Add Service Form -->
+        <div class="content-card">
+            <form id="addServiceForm">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="mb-4">
+                            <label class="form-label">Service Name *</label>
+                            <input type="text" class="form-control form-control-lg" id="serviceName" placeholder="Enter service name" required>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label">Short Description *</label>
+                            <div class="input-group">
+                                <textarea class="form-control" id="serviceDescription" rows="4" placeholder="Describe your service briefly..." required></textarea>
+                                <button class="btn btn-outline-primary" type="button" onclick="generateDescription()" id="generateDescBtn">
+                                    <i class="fas fa-magic"></i> AI Generate
+                                </button>
+                            </div>
+                            <small class="text-muted">Keep it under 150 characters for best display</small>
+                            <div id="aiSuggestions" class="mt-2" style="display: none;">
+                                <small class="text-info"><i class="fas fa-lightbulb"></i> AI Suggestions:</small>
+                                <div id="suggestionList" class="mt-1"></div>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label">Detailed Description</label>
+                            <textarea class="form-control" id="serviceDetails" rows="6" placeholder="Provide detailed information about this service..."></textarea>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label">Service Features (Optional)</label>
+                            <input type="text" class="form-control mb-2" placeholder="Feature 1 (e.g., 24/7 Support)">
+                            <input type="text" class="form-control mb-2" placeholder="Feature 2 (e.g., Real-time Tracking)">
+                            <input type="text" class="form-control mb-2" placeholder="Feature 3 (e.g., Door-to-Door)">
+                            <button type="button" class="btn btn-sm btn-outline-primary" onclick="addFeatureField()">
+                                <i class="fas fa-plus me-1"></i>Add Another Feature
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="mb-4">
+                            <label class="form-label">Service Icon *</label>
+                            <div class="text-center">
+                                <div class="icon-preview" id="iconPreview">
+                                    <i class="fas fa-cog"></i>
+                                </div>
+                                <small class="text-muted">Click an icon below to select</small>
+                            </div>
+
+                            <div class="mt-3 text-center">
+                                <div class="icon-option selected" data-icon="fas fa-cog" onclick="selectIcon('fas fa-cog')">
+                                    <i class="fas fa-cog"></i>
+                                </div>
+                                <div class="icon-option" data-icon="fas fa-truck" onclick="selectIcon('fas fa-truck')">
+                                    <i class="fas fa-truck"></i>
+                                </div>
+                                <div class="icon-option" data-icon="fas fa-shipping-fast" onclick="selectIcon('fas fa-shipping-fast')">
+                                    <i class="fas fa-shipping-fast"></i>
+                                </div>
+                                <div class="icon-option" data-icon="fas fa-boxes" onclick="selectIcon('fas fa-boxes')">
+                                    <i class="fas fa-boxes"></i>
+                                </div>
+                                <div class="icon-option" data-icon="fas fa-warehouse" onclick="selectIcon('fas fa-warehouse')">
+                                    <i class="fas fa-warehouse"></i>
+                                </div>
+                                <div class="icon-option" data-icon="fas fa-taxi" onclick="selectIcon('fas fa-taxi')">
+                                    <i class="fas fa-taxi"></i>
+                                </div>
+                                <div class="icon-option" data-icon="fas fa-plane" onclick="selectIcon('fas fa-plane')">
+                                    <i class="fas fa-plane"></i>
+                                </div>
+                                <div class="icon-option" data-icon="fas fa-ship" onclick="selectIcon('fas fa-ship')">
+                                    <i class="fas fa-ship"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label">Status</label>
+                            <div class="status-toggle">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="serviceStatus" checked>
+                                    <label class="form-check-label" for="serviceStatus">
+                                        <span id="statusText">Active</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label">Service Category</label>
+                            <select class="form-control" id="serviceCategory">
+                                <option value="transportation">Transportation</option>
+                                <option value="shipping">Shipping</option>
+                                <option value="logistics">Logistics</option>
+                                <option value="warehousing">Warehousing</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex gap-3 mt-4">
+                    <button type="submit" class="btn btn-save">
+                        <i class="fas fa-save me-2"></i>Create Service
+                    </button>
+                    <button type="button" class="btn btn-cancel" onclick="window.location.href='view.html'">
+                        <i class="fas fa-times me-2"></i>Cancel
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Check if admin is logged in
+        if (!localStorage.getItem('adminLoggedIn')) {
+            window.location.href = '../../../login.html';
+        }
+
+        function logout() {
+            localStorage.removeItem('adminLoggedIn');
+            window.location.href = '../../../login.html';
+        }
+
+        // Icon selection
+        let selectedIcon = 'fas fa-cog';
+
+        function selectIcon(iconClass) {
+            selectedIcon = iconClass;
+            document.getElementById('iconPreview').innerHTML = `<i class="${iconClass}"></i>`;
+
+            // Update selected state
+            document.querySelectorAll('.icon-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            document.querySelector(`[data-icon="${iconClass}"]`).classList.add('selected');
+        }
+
+        // Status toggle
+        document.getElementById('serviceStatus').addEventListener('change', function() {
+            document.getElementById('statusText').textContent = this.checked ? 'Active' : 'Inactive';
+        });
+
+        // Add feature field
+        function addFeatureField() {
+            const container = document.querySelector('.mb-4 .btn-outline-primary').parentElement;
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.className = 'form-control mb-2';
+            input.placeholder = 'Additional feature...';
+            container.insertBefore(input, container.lastElementChild);
+        }
+
+        // AI Description Generation
+        function generateDescription() {
+            const serviceName = document.getElementById('serviceName').value;
+            if (!serviceName.trim()) {
+                alert('Please enter service name first!');
+                return;
+            }
+
+            // Show loading on button
+            const btn = document.getElementById('generateDescBtn');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating...';
+            btn.disabled = true;
+
+            // Simulate AI generation
+            setTimeout(() => {
+                let description = '';
+                const name = serviceName.toLowerCase();
+
+                if (name.includes('delivery') || name.includes('shipping')) {
+                    description = `Fast and reliable ${serviceName} services with real-time tracking and professional handling across Pakistan.`;
+                } else if (name.includes('cargo') || name.includes('freight')) {
+                    description = `Comprehensive ${serviceName} solutions for heavy cargo and international freight with customs clearance support.`;
+                } else if (name.includes('logistics')) {
+                    description = `Complete ${serviceName} management with end-to-end supply chain solutions and warehouse facilities.`;
+                } else {
+                    description = `Professional ${serviceName} services designed to meet your logistics needs with exceptional quality and reliability.`;
+                }
+
+                document.getElementById('serviceDescription').value = description;
+
+                // Show AI suggestions
+                document.getElementById('aiSuggestions').style.display = 'block';
+                document.getElementById('suggestionList').innerHTML = `
+                    <div class="alert alert-info py-2 px-3 mb-1">
+                        <small><i class="fas fa-lightbulb text-warning me-1"></i>Try adding: "24/7 support", "nationwide coverage", "GPS tracking"</small>
+                    </div>
+                `;
+
+                // Reset button
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }, 1500);
+        }
+
+        // Form submission
+        document.getElementById('addServiceForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const serviceData = {
+                name: document.getElementById('serviceName').value,
+                description: document.getElementById('serviceDescription').value,
+                details: document.getElementById('serviceDetails').value,
+                icon: selectedIcon,
+                status: document.getElementById('serviceStatus').checked ? 'active' : 'inactive',
+                category: document.getElementById('serviceCategory').value
+            };
+
+            // Send data to backend API
+            fetch('/api/services', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(serviceData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Service created successfully! Website has been updated.');
+                    window.location.href = 'view.html';
+                } else {
+                    alert('Failed to create service: ' + (data.error || 'Unknown error'));
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Failed to create service. Please try again.');
+            });
+        });
+
+        // AI Content Generation
+        function generateDescription() {
+            const serviceName = document.getElementById('serviceName').value;
+            if (!serviceName.trim()) {
+                alert('Please enter a service name first!');
+                return;
+            }
+
+            const btn = document.getElementById('generateDescBtn');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating...';
+            btn.disabled = true;
+
+            // Simulate AI API call (in real app, this would call OpenAI/Gemini API)
+            setTimeout(() => {
+                const suggestions = generateAISuggestions(serviceName);
+                showAISuggestions(suggestions);
+
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }, 2000);
+        }
+
+        function generateAISuggestions(serviceName) {
+            const suggestions = [];
+
+            // AI-like suggestions based on service name
+            if (serviceName.toLowerCase().includes('delivery')) {
+                suggestions.push(
+                    "Fast and reliable delivery services with real-time tracking and professional handling.",
+                    "Comprehensive delivery solutions ensuring safe and timely package transportation across the nation.",
+                    "Express delivery services with end-to-end tracking and customer satisfaction guarantee."
+                );
+            } else if (serviceName.toLowerCase().includes('cargo')) {
+                suggestions.push(
+                    "Specialized freight and cargo solutions for large-scale transportation needs.",
+                    "Heavy cargo transportation with specialized equipment and experienced logistics team.",
+                    "Complete cargo management services including loading, transportation, and delivery."
+                );
+            } else if (serviceName.toLowerCase().includes('shipping')) {
+                suggestions.push(
+                    "Seamless shipping solutions with worldwide coverage and competitive pricing.",
+                    "Professional shipping services with secure packaging and reliable delivery timelines.",
+                    "Comprehensive shipping logistics from pickup to final destination worldwide."
+                );
+            } else if (serviceName.toLowerCase().includes('transport')) {
+                suggestions.push(
+                    "Reliable transportation services connecting cities with comfort and safety.",
+                    "Professional transportation solutions with modern fleet and experienced drivers.",
+                    "Complete transportation network serving all major routes with punctuality."
+                );
+            } else {
+                suggestions.push(
+                    `Professional ${serviceName.toLowerCase()} services designed to meet your specific needs.`,
+                    `Comprehensive ${serviceName.toLowerCase()} solutions with quality assurance and customer satisfaction.`,
+                    `Expert ${serviceName.toLowerCase()} services delivered with precision and reliability.`
+                );
+            }
+
+            return suggestions;
+        }
+
+        function showAISuggestions(suggestions) {
+            const container = document.getElementById('aiSuggestions');
+            const list = document.getElementById('suggestionList');
+
+            list.innerHTML = '';
+            suggestions.forEach((suggestion, index) => {
+                const suggestionDiv = document.createElement('div');
+                suggestionDiv.className = 'alert alert-light border p-2 mb-2';
+                suggestionDiv.innerHTML = `
+                    <small class="text-muted">Suggestion ${index + 1}:</small><br>
+                    "${suggestion}"
+                    <button class="btn btn-sm btn-outline-success ms-2" onclick="useSuggestion('${suggestion.replace(/'/g, "\\'")}')">
+                        <i class="fas fa-check"></i> Use
+                    </button>
+                `;
+                list.appendChild(suggestionDiv);
+            });
+
+            container.style.display = 'block';
+        }
+
+        function useSuggestion(suggestion) {
+            document.getElementById('serviceDescription').value = suggestion;
+            document.getElementById('aiSuggestions').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

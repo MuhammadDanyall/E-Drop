@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Management - E-DROP Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .sidebar {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            min-height: 100vh;
+            color: white;
+            position: fixed;
+            width: 250px;
+            left: 0;
+            top: 0;
+            z-index: 100;
+        }
+        .sidebar .nav-link {
+            color: rgba(255,255,255,0.8);
+            padding: 12px 20px;
+            margin: 5px 15px;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        .sidebar .nav-link:hover,
+        .sidebar .nav-link.active {
+            background-color: rgba(255,107,53,0.2);
+            color: #ff6b35;
+        }
+        .sidebar .nav-link i {
+            width: 20px;
+            margin-right: 10px;
+        }
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+        .top-navbar {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 15px 30px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+        }
+        .content-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            padding: 30px;
+            margin-bottom: 20px;
+        }
+        .upload-area {
+            border: 2px dashed #dee2e6;
+            border-radius: 10px;
+            padding: 40px;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+            background: #f8f9fa;
+        }
+        .upload-area:hover,
+        .upload-area.dragover {
+            border-color: #ff6b35;
+            background: rgba(255,107,53,0.05);
+        }
+        .upload-icon {
+            font-size: 3rem;
+            color: #6c757d;
+            margin-bottom: 15px;
+        }
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .media-item {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .media-item:hover {
+            transform: translateY(-5px);
+        }
+        .media-image {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+        .media-info {
+            padding: 15px;
+        }
+        .media-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+        }
+        .media-meta {
+            font-size: 0.8rem;
+            color: #6c757d;
+        }
+        .btn-upload {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+        .btn-upload:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(135deg, #218838 0%, #1aa085 100%);
+        }
+        .current-image {
+            border: 3px solid #ff6b35;
+            position: relative;
+        }
+        .current-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #ff6b35;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+        .image-placeholder {
+            height: 150px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+            font-size: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <nav class="sidebar">
+        <div class="p-3">
+            <h4 class="text-center mb-4">
+                <i class="fas fa-tachometer-alt me-2"></i>
+                E-DROP Admin
+            </h4>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="dashboard.html">
+                        <i class="fas fa-home"></i>Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <h6 class="text-uppercase text-muted px-3 mt-3 mb-2">Pages</h6>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="pages/home.html">
+                        <i class="fas fa-home"></i>Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="pages/about.html">
+                        <i class="fas fa-info-circle"></i>About
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="pages/services.html">
+                        <i class="fas fa-cogs"></i>Services
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="pages/contact.html">
+                        <i class="fas fa-envelope"></i>Contact
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <h6 class="text-uppercase text-muted px-3 mt-3 mb-2">Management</h6>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="services/view.html">
+                        <i class="fas fa-list"></i>Services Management
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="messages.html">
+                        <i class="fas fa-envelope-open"></i>Contact Messages
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="media.html">
+                        <i class="fas fa-images"></i>Media
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="profile.html">
+                        <i class="fas fa-user"></i>Profile
+                    </a>
+                </li>
+                <li class="nav-item mt-3">
+                    <a class="nav-link text-danger" href="#" onclick="logout()">
+                        <i class="fas fa-sign-out-alt"></i>Logout
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Top Navbar -->
+        <div class="top-navbar d-flex justify-content-between align-items-center">
+            <div>
+                <h4 class="mb-0">Media Management</h4>
+                <small class="text-muted">Upload and manage website images</small>
+            </div>
+            <div class="d-flex align-items-center">
+                <i class="fas fa-user-circle fa-2x text-secondary me-2"></i>
+                <span>Admin</span>
+            </div>
+        </div>
+
+        <!-- Upload Section -->
+        <div class="content-card">
+            <h5 class="mb-3">
+                <i class="fas fa-cloud-upload-alt me-2"></i>Upload New Images
+            </h5>
+            <div class="upload-area" id="uploadArea">
+                <div class="upload-icon">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                </div>
+                <h5>Drag & Drop Images Here</h5>
+                <p class="text-muted">or click to browse files</p>
+                <input type="file" id="fileInput" multiple accept="image/*" style="display: none;">
+                <button class="btn btn-upload mt-3" onclick="document.getElementById('fileInput').click()">
+                    <i class="fas fa-plus me-2"></i>Choose Files
+                </button>
+                <small class="d-block mt-2 text-muted">Supported formats: JPG, PNG, GIF (Max 5MB each)</small>
+            </div>
+        </div>
+
+        <!-- Current Images -->
+        <div class="content-card">
+            <h5 class="mb-3">
+                <i class="fas fa-images me-2"></i>Current Images
+            </h5>
+
+            <div class="row mb-4">
+                <div class="col-md-3">
+                    <h6>Hero Images</h6>
+                    <div class="media-grid">
+                        <div class="media-item current-image">
+                            <div class="current-badge">Current</div>
+                            <div class="image-placeholder">
+                                <i class="fas fa-image"></i>
+                            </div>
+                            <div class="media-info">
+                                <div class="media-name">hero-bg.jpg</div>
+                                <div class="media-meta">1.2 MB • 1920x1080</div>
+                                <div class="mt-2">
+                                    <button class="btn btn-sm btn-outline-primary me-1" onclick="generateCaption('hero-bg.jpg')">
+                                        <i class="fas fa-brain"></i> AI Caption
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-info me-1">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-danger">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                                <div id="caption-hero-bg.jpg" class="mt-1" style="display: none;">
+                                    <small class="text-muted ai-caption"></small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <h6>Service Icons</h6>
+                    <div class="media-grid">
+                        <div class="media-item">
+                            <div class="image-placeholder">
+                                <i class="fas fa-taxi"></i>
+                            </div>
+                            <div class="media-info">
+                                <div class="media-name">taxi-icon.png</div>
+                                <div class="media-meta">45 KB • 64x64</div>
+                                <div class="mt-2">
+                                    <button class="btn btn-sm btn-outline-primary me-1">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-danger">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="media-item">
+                            <div class="image-placeholder">
+                                <i class="fas fa-truck"></i>
+                            </div>
+                            <div class="media-info">
+                                <div class="media-name">truck-icon.png</div>
+                                <div class="media-meta">48 KB • 64x64</div>
+                                <div class="mt-2">
+                                    <button class="btn btn-sm btn-outline-primary me-1">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-danger">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <h6>Logos</h6>
+                    <div class="media-grid">
+                        <div class="media-item">
+                            <div class="image-placeholder">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="media-info">
+                                <div class="media-name">logo-main.png</div>
+                                <div class="media-meta">156 KB • 300x100</div>
+                                <div class="mt-2">
+                                    <button class="btn btn-sm btn-outline-primary me-1">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-danger">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="media-item">
+                            <div class="image-placeholder">
+                                <i class="fas fa-circle"></i>
+                            </div>
+                            <div class="media-info">
+                                <div class="media-name">favicon.ico</div>
+                                <div class="media-meta">12 KB • 32x32</div>
+                                <div class="mt-2">
+                                    <button class="btn btn-sm btn-outline-primary me-1">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-danger">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <h6>Testimonials</h6>
+                    <div class="media-grid">
+                        <div class="media-item">
+                            <div class="image-placeholder">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div class="media-info">
+                                <div class="media-name">testimonial-1.jpg</div>
+                                <div class="media-meta">245 KB • 200x200</div>
+                                <div class="mt-2">
+                                    <button class="btn btn-sm btn-outline-primary me-1">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-danger">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="media-item">
+                            <div class="image-placeholder">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div class="media-info">
+                                <div class="media-name">testimonial-2.jpg</div>
+                                <div class="media-meta">198 KB • 200x200</div>
+                                <div class="mt-2">
+                                    <button class="btn btn-sm btn-outline-primary me-1">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-danger">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Image Settings -->
+        <div class="content-card">
+            <h5 class="mb-3">
+                <i class="fas fa-cogs me-2"></i>Image Settings
+            </h5>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label class="form-label">Default Image Quality</label>
+                        <select class="form-control">
+                            <option>High (95%)</option>
+                            <option selected>Medium (80%)</option>
+                            <option>Low (60%)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label class="form-label">Maximum File Size</label>
+                        <select class="form-control">
+                            <option>2 MB</option>
+                            <option selected>5 MB</option>
+                            <option>10 MB</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-upload">
+                <i class="fas fa-save me-2"></i>Save Settings
+            </button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Check if admin is logged in
+        if (!localStorage.getItem('adminLoggedIn')) {
+            window.location.href = 'login.html';
+        }
+
+        function logout() {
+            localStorage.removeItem('adminLoggedIn');
+            window.location.href = 'login.html';
+        }
+
+        // File upload handling
+        const uploadArea = document.getElementById('uploadArea');
+        const fileInput = document.getElementById('fileInput');
+
+        // Click to upload
+        uploadArea.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        // Drag and drop
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.classList.add('dragover');
+        });
+
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.classList.remove('dragover');
+        });
+
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('dragover');
+
+            const files = e.dataTransfer.files;
+            handleFiles(files);
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            const files = e.target.files;
+            handleFiles(files);
+        });
+
+        // AI Caption Generation
+        function generateCaption(imageName) {
+            const captionDiv = document.getElementById(`caption-${imageName}`);
+            const btn = event.target;
+
+            if (captionDiv.style.display === 'block') {
+                captionDiv.style.display = 'none';
+                return;
+            }
+
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+            btn.disabled = true;
+
+            // Simulate AI caption generation
+            setTimeout(() => {
+                const caption = generateAICaption(imageName);
+                captionDiv.innerHTML = `<small class="text-info"><i class="fas fa-lightbulb"></i> AI Caption: "${caption}"</small>`;
+                captionDiv.style.display = 'block';
+
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }, 2000);
+        }
+
+        function generateAICaption(imageName) {
+            const captions = {
+                'hero-bg.jpg': 'Modern logistics warehouse with organized cargo containers and professional staff managing shipments',
+                'taxi-icon.png': 'Professional transportation icon showing a taxi cab for ride-hailing services',
+                'truck-icon.png': 'Commercial delivery truck icon representing freight and shipping services',
+                'cargo-icon.png': 'Cargo container illustration for international shipping and logistics',
+                'warehouse-icon.png': 'Modern warehouse facility icon for storage and distribution services',
+                'logo-main.png': 'E-DROP company logo with modern design and brand colors',
+                'testimonial-1.jpg': 'Satisfied customer testimonial photo showing positive feedback and trust',
+                'testimonial-2.jpg': 'Happy client photo demonstrating successful business partnership'
+            };
+
+            return captions[imageName] || `Professional ${imageName.split('.')[0].replace('-', ' ')} image for E-DROP logistics services`;
+        }
+
+        function handleFiles(files) {
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+
+                // Check if it's an image
+                if (!file.type.startsWith('image/')) {
+                    alert(`${file.name} is not an image file!`);
+                    continue;
+                }
+
+                // Check file size (5MB limit)
+                if (file.size > 5 * 1024 * 1024) {
+                    alert(`${file.name} is too large! Maximum size is 5MB.`);
+                    continue;
+                }
+
+                // In a real app, you would upload the file to server
+                console.log('Uploading file:', file.name);
+
+                // Show success message with AI suggestion
+                const aiCaption = generateAICaption(file.name);
+                alert(`${file.name} uploaded successfully!\n\nAI Suggested Alt Text: "${aiCaption}"`);
+            }
+        }
+    </script>
+</body>
+</html>

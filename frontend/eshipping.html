@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-SHIPPING - Fast & Secure Parcel Delivery | E-DROP</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="eship.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="mobile-fixes.css">
+</head>
+
+<body>
+
+    <!-- Premium Preloader -->
+    <div id="preloader">
+        <div class="preloader-content">
+            <div class="loader-truck"><img src="../pictures/logo.jpeg" alt="E-Drop Logo"
+                    style="width: 80px; height: 80px; object-fit: cover; border-radius: 50%; box-shadow: 0 0 20px rgba(255, 107, 53, 0.5);">
+            </div>
+            <div class="loader-track">
+                <div class="loader-progress"></div>
+            </div>
+            <div class="loader-text">E-DROP</div>
+        </div>
+    </div>
+
+    <!-- Custom Cursor -->
+
+
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../pictures/logo.jpeg" alt="E-DROP Logo" class="logo-img">
+                    <h1> E-DROP</h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html#home" class="active">HOME</a></li>
+                    <li><a href="index.html#about">ABOUT US</a></li>
+                    <li><a href="index.html#services">SERVICE</a></li>
+                    <li><a href="index.html#team">TEAM</a></li>
+                    <li><a href="index.html#testimonials">REVIEWS</a></li>
+                    <li><a href="index.html#faq">HELP CENTER</a></li>
+
+                    <li><a href="index.html#contact">CONTACT US</a></li>
+                    <li><a href="#" data-auth-type="login" id="login-btn">LOGIN</a></li>
+                    <li><a href="#" data-auth-type="signup" id="signup-btn">SIGN UP</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-wrapper">
+        <div class="hero-content">
+            <div class="container">
+                <h1>TRACK AND TRACE<br>WITH <span class="highlight">EASE!</span></h1>
+                <p>Easily track and trace your delivery journey from dispatch to destination with E-Shipping.</p>
+            </div>
+        </div>
+        <div class="hero-shape"></div>
+    </section>
+
+    <!-- Track Shipment Section -->
+    <section class="track-section animate-on-scroll">
+        <div class="container">
+            <h2 class="animate-on-scroll">Track Your <span class="highlight">Shipment</span></h2>
+            <p class="animate-on-scroll fade-in-left">Enter your E-Shipping tracking reference number to monitor your
+                package.</p>
+
+            <form class="track-form" id="shippingTrackForm">
+                <input type="text" id="shippingTrackingNumber" placeholder="Enter Tracking Number" required />
+                <button type="submit">Track Shipment</button>
+            </form>
+
+            <!-- Tracking Results Container -->
+            <div id="shippingTrackingResults" class="tracking-results" style="display: none;">
+                <div class="tracking-header">
+                    <h3>Shipment Status</h3>
+                    <div class="tracking-number-display">
+                        <span>Tracking #:</span> <strong id="shippingDisplayTrackingNumber"></strong>
+                    </div>
+                </div>
+
+                <div class="tracking-timeline">
+                    <div class="timeline-item" id="shipping-timeline-booked">
+                        <div class="timeline-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h4>Order Placed</h4>
+                            <p id="shipping-booked-date">Date: --</p>
+                            <p>Your order has been received and is being processed.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item" id="shipping-timeline-picked">
+                        <div class="timeline-icon">
+                            <i class="fas fa-box"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h4>Picked Up</h4>
+                            <p id="shipping-picked-date">Date: --</p>
+                            <p>Your package has been collected from the sender.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item" id="shipping-timeline-transit">
+                        <div class="timeline-icon">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h4>In Transit</h4>
+                            <p id="shipping-transit-date">Date: --</p>
+                            <p>Your shipment is on its way to the destination.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item" id="shipping-timeline-delivered">
+                        <div class="timeline-icon">
+                            <i class="fas fa-check-double"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h4>Delivered</h4>
+                            <p id="shipping-delivered-date">Date: --</p>
+                            <p>Your package has been successfully delivered.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="shipment-details">
+                    <h4>Shipment Information</h4>
+                    <div class="details-grid">
+                        <div class="detail-item">
+                            <span class="detail-label">Origin:</span>
+                            <span id="shipping-origin">--</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Destination:</span>
+                            <span id="shipping-destination">--</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Estimated Delivery:</span>
+                            <span id="shipping-estimated-delivery">--</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Package Type:</span>
+                            <span id="shipping-package-type">--</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Weight:</span>
+                            <span id="shipping-weight">--</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Service Type:</span>
+                            <span id="shipping-service-type">--</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Error Message -->
+            <div id="shippingTrackingError" class="tracking-error" style="display: none;">
+                <i class="fas fa-exclamation-triangle"></i>
+                <p>Tracking number not found. Please check your tracking number and try again.</p>
+            </div>
+
+            <!-- Store Badges -->
+            <div class="store-badges">
+                <img src="../pictures/huawei_store.png" alt="Explore it on Huawei AppGallery">
+                <img src="../pictures/apple_store.png" alt="Download on the App Store">
+                <img src="../pictures/google_store.png" alt="Get it on Google Play">
+            </div>
+        </div>
+    </section>
+
+    <!-- How Shipping Works Section -->
+    <section class="how-shipping-works animate-on-scroll">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll fade-in-up">How <span class="highlight">E-Shipping</span> Works
+            </h2>
+            <div class="shipping-process-grid">
+                <div class="process-card">
+                    <div class="process-icon">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <h3>1. Book Your Shipment</h3>
+                    <p>Choose your delivery service, enter pickup and delivery details, and get instant pricing.</p>
+                </div>
+                <div class="process-card">
+                    <div class="process-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3>2. Pickup & Transit</h3>
+                    <p>Our agent picks up your parcel and begins transit with real-time GPS tracking.</p>
+                </div>
+                <div class="process-card">
+                    <div class="process-icon">
+                        <i class="fas fa-route"></i>
+                    </div>
+                    <h3>3. Track in Real-Time</h3>
+                    <p>Monitor your shipment's journey with live updates and delivery notifications.</p>
+                </div>
+                <div class="process-card">
+                    <div class="process-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>4. Safe Delivery</h3>
+                    <p>Your parcel is delivered safely to the destination with signature confirmation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Offered Section -->
+    <section class="services-offered animate-on-scroll">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll fade-in-up">Our <span class="highlight">Shipping Services</span>
+            </h2>
+            <div class="services-grid">
+                <div class="service-offered-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <h3>Express Delivery</h3>
+                    <p>Fastest delivery within 24-48 hours for urgent shipments.</p>
+                    <ul>
+                        <li>Same day pickup</li>
+                        <li>Real-time tracking</li>
+                        <li>Insurance included</li>
+                    </ul>
+                </div>
+                <div class="service-offered-card">
+                    <div class="service-icon">
+                        <i class="fas fa-truck-moving"></i>
+                    </div>
+                    <h3>Standard Delivery</h3>
+                    <p>Reliable delivery within 3-5 business days.</p>
+                    <ul>
+                        <li>Cost-effective rates</li>
+                        <li>Door-to-door service</li>
+                        <li>Basic insurance</li>
+                    </ul>
+                </div>
+                <div class="service-offered-card">
+                    <div class="service-icon">
+                        <i class="fas fa-warehouse"></i>
+                    </div>
+                    <h3>Warehousing</h3>
+                    <p>Secure storage solutions for your inventory needs.</p>
+                    <ul>
+                        <li>Climate-controlled storage</li>
+                        <li>Inventory management</li>
+                        <li>Order fulfillment</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-choose-us animate-on-scroll">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="animate-on-scroll fade-in-up">Why Choose <span class="highlight">E-Shipping?</span></h2>
+                <p class="animate-on-scroll fade-in-left">Experience reliable, secure, and efficient parcel delivery
+                    services tailored for your needs</p>
+            </div>
+
+            <div class="why-choose-grid">
+                <div class="why-choose-card">
+                    <div class="why-choose-icon">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <h3>Fast Delivery</h3>
+                    <p>Quick and efficient delivery services with real-time tracking and updates.</p>
+                </div>
+
+                <div class="why-choose-card">
+                    <div class="why-choose-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Secure Packaging</h3>
+                    <p>Professional packaging and handling to ensure your parcels arrive safely.</p>
+                </div>
+
+                <div class="why-choose-card">
+                    <div class="why-choose-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h3>Nationwide Coverage</h3>
+                    <p>Comprehensive delivery network covering all major cities in Pakistan.</p>
+                </div>
+
+                <div class="why-choose-card">
+                    <div class="why-choose-icon">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </div>
+                    <h3>Affordable Rates</h3>
+                    <p>Competitive pricing with transparent costs and no hidden fees.</p>
+                </div>
+
+                <div class="why-choose-card">
+                    <div class="why-choose-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>24/7 Support</h3>
+                    <p>Round-the-clock customer service for all your shipping needs.</p>
+                </div>
+
+                <div class="why-choose-card">
+                    <div class="why-choose-icon">
+                        <i class="fas fa-box-open"></i>
+                    </div>
+                    <h3>Door-to-Door Service</h3>
+                    <p>Complete pickup and delivery service from your doorstep to destination.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download App Section -->
+    <section class="download-app-eshipping animate-on-scroll">
+        <div class="container download-flex">
+            <div class="download-content animate-on-scroll fade-in-left">
+                <h2 class="animate-on-scroll">Get the E-Drop App Today!</h2>
+                <p>Track your shipments, book deliveries, and manage all your shipping needs on the go.</p>
+                <div class="app-buttons">
+                    <a href="#" class="app-button">
+                        <img src="../pictures/google_store.png" alt="Google Play">
+                    </a>
+                    <a href="#" class="app-button">
+                        <img src="../pictures/apple_store.png" alt="App Store">
+                    </a>
+                    <a href="#" class="app-button">
+                        <img src="../pictures/huawei_store.png" alt="AppGallery">
+                    </a>
+                </div>
+            </div>
+            <div class="download-image">
+                <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwxfHxtb2JpbGUlMjBwaG9uZSUyMG1hcHxlbnwwfHx8fDE3MDYwMjA5OTV8MA&ixlib=rb-4.0.3&q=80&w=1080"
+                    alt="Mobile App with Map">
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h3>E-DROP</h3>
+                    <p>Moving Was Never So Easy</p>
+                    <p>Fast & Secure Move</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html#home">Home</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#services">Services</a></li>
+                        <li><a href="index.html#team">Team</a></li>
+                        <li><a href="index.html#testimonials">Testimonials</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-phone"></i> +92 321-125687</p>
+                    <p><i class="fas fa-envelope"></i> sachdeva@coin.sin</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Sadar Bazar, Peshawar, Kpk</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-diagonal"></div>
+
+        <!-- Sub Footer for Legal & Extra Links -->
+        <div class="sub-footer"
+            style="background: #111; padding: 25px 20px; border-top: 1px solid #333; position: relative; z-index: 2; text-align: center;">
+            <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; margin-bottom: 12px;">
+                <a href="faq.html"
+                    style="color: #bbb; text-decoration: none; font-size: 0.95rem; transition: color 0.3s ease;"
+                    onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#bbb'">FAQ</a>
+                <a href="privacy-policy.html"
+                    style="color: #bbb; text-decoration: none; font-size: 0.95rem; transition: color 0.3s ease;"
+                    onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#bbb'">Privacy Policy</a>
+                <a href="terms-conditions.html"
+                    style="color: #bbb; text-decoration: none; font-size: 0.95rem; transition: color 0.3s ease;"
+                    onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#bbb'">Terms & Conditions</a>
+            </div>
+            <p style="margin: 0; font-size: 0.85rem; color: #777;">&copy; 2026 E Drop. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

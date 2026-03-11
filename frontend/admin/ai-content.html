@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Content Assistant - E-DROP Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .sidebar {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            min-height: 100vh;
+            color: white;
+            position: fixed;
+            width: 250px;
+            left: 0;
+            top: 0;
+            z-index: 100;
+        }
+        .sidebar .nav-link {
+            color: rgba(255,255,255,0.8);
+            padding: 12px 20px;
+            margin: 5px 15px;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        .sidebar .nav-link:hover,
+        .sidebar .nav-link.active {
+            background-color: rgba(255,107,53,0.2);
+            color: #ff6b35;
+        }
+        .sidebar .nav-link i {
+            width: 20px;
+            margin-right: 10px;
+        }
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+        .top-navbar {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 15px 30px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+        }
+        .content-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            padding: 30px;
+            margin-bottom: 20px;
+        }
+        .ai-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+        }
+        .ai-card:hover {
+            transform: translateY(-5px);
+        }
+        .ai-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+        .generate-btn {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+        .generate-btn:hover {
+            transform: translateY(-2px);
+        }
+        .ai-response {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 15px;
+            border-left: 4px solid #ff6b35;
+        }
+        .loading-spinner {
+            display: none;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .suggestion-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border: 1px solid #dee2e6;
+            transition: all 0.3s;
+        }
+        .suggestion-card:hover {
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+        .copy-btn {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 15px;
+            color: white;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <nav class="sidebar">
+        <div class="p-3">
+            <h4 class="text-center mb-4">
+                <i class="fas fa-tachometer-alt me-2"></i>
+                E-DROP Admin
+            </h4>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="dashboard.html">
+                        <i class="fas fa-home"></i>Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <h6 class="text-uppercase text-muted px-3 mt-3 mb-2">Pages</h6>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="pages/home.html">
+                        <i class="fas fa-home"></i>Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="pages/about.html">
+                        <i class="fas fa-info-circle"></i>About
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="pages/services.html">
+                        <i class="fas fa-cogs"></i>Services
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="pages/contact.html">
+                        <i class="fas fa-envelope"></i>Contact
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <h6 class="text-uppercase text-muted px-3 mt-3 mb-2">AI Tools</h6>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="ai-content.html">
+                        <i class="fas fa-robot"></i>AI Assistant
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <h6 class="text-uppercase text-muted px-3 mt-3 mb-2">Management</h6>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="services/view.html">
+                        <i class="fas fa-list"></i>Services Management
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="messages.html">
+                        <i class="fas fa-envelope-open"></i>Contact Messages
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="media.html">
+                        <i class="fas fa-images"></i>Media
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="profile.html">
+                        <i class="fas fa-user"></i>Profile
+                    </a>
+                </li>
+                <li class="nav-item mt-3">
+                    <a class="nav-link text-danger" href="#" onclick="logout()">
+                        <i class="fas fa-sign-out-alt"></i>Logout
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Top Navbar -->
+        <div class="top-navbar d-flex justify-content-between align-items-center">
+            <div>
+                <h4 class="mb-0">AI Content Assistant</h4>
+                <small class="text-muted">Let AI help you create better content</small>
+            </div>
+            <div class="d-flex align-items-center">
+                <i class="fas fa-robot fa-2x text-primary me-2"></i>
+                <span>AI Powered</span>
+            </div>
+        </div>
+
+        <!-- AI Features Grid -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="ai-card">
+                    <div class="ai-icon">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h5>Content Generator</h5>
+                    <p>AI se professional content generate karo - service descriptions, about text, marketing copy</p>
+                    <button class="btn generate-btn" onclick="showContentGenerator()">
+                        <i class="fas fa-plus me-2"></i>Content Banana
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="ai-card">
+                    <div class="ai-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h5>SEO Optimizer</h5>
+                    <p>Content ko SEO-friendly banana, meta descriptions aur keywords suggest karna</p>
+                    <button class="btn generate-btn" onclick="showSEOOptimizer()">
+                        <i class="fas fa-search-plus me-2"></i>SEO Optimize Karo
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="ai-card">
+                    <div class="ai-icon">
+                        <i class="fas fa-images"></i>
+                    </div>
+                    <h5>Image Alt Text</h5>
+                    <p>Uploaded images ke liye AI se descriptive alt text generate karo</p>
+                    <button class="btn generate-btn" onclick="showAltTextGenerator()">
+                        <i class="fas fa-tag me-2"></i>Alt Text Banana
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="ai-card">
+                    <div class="ai-icon">
+                        <i class="fas fa-reply"></i>
+                    </div>
+                    <h5>Email Assistant</h5>
+                    <p>Contact form messages ke liye AI se professional email replies draft karo</p>
+                    <button class="btn generate-btn" onclick="showEmailAssistant()">
+                        <i class="fas fa-envelope me-2"></i>Email Reply Banana
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Generator Section -->
+        <div id="contentGenerator" class="content-card" style="display: none;">
+            <h5 class="mb-3">
+                <i class="fas fa-magic me-2 text-primary"></i>AI Content Generator
+            </h5>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label class="form-label">Content Type</label>
+                        <select class="form-control" id="contentType">
+                            <option value="service">Service Description</option>
+                            <option value="about">About Section</option>
+                            <option value="marketing">Marketing Copy</option>
+                            <option value="blog">Blog Post</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Topic/Keywords</label>
+                        <input type="text" class="form-control" id="contentTopic" placeholder="e.g., logistics, delivery, transportation">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Tone</label>
+                        <select class="form-control" id="contentTone">
+                            <option value="professional">Professional</option>
+                            <option value="friendly">Friendly</option>
+                            <option value="technical">Technical</option>
+                            <option value="persuasive">Persuasive</option>
+                        </select>
+                    </div>
+                    <button class="btn generate-btn" onclick="generateContent()">
+                        <i class="fas fa-magic me-2"></i>Generate Content
+                    </button>
+                </div>
+                <div class="col-md-6">
+                    <div id="contentResult" class="ai-response" style="display: none;">
+                        <h6>AI Generated Content:</h6>
+                        <div id="generatedContent"></div>
+                        <button class="btn copy-btn mt-3" onclick="copyToClipboard('generatedContent')">
+                            <i class="fas fa-copy me-1"></i>Copy Text
+                        </button>
+                    </div>
+                    <div class="loading-spinner" id="contentLoading">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Generating...</span>
+                        </div>
+                        <p class="mt-2">AI content generate kar raha hai...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEO Optimizer Section -->
+        <div id="seoOptimizer" class="content-card" style="display: none;">
+            <h5 class="mb-3">
+                <i class="fas fa-search me-2 text-success"></i>SEO Content Optimizer
+            </h5>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label class="form-label">Your Content</label>
+                        <textarea class="form-control" id="seoInput" rows="6" placeholder="Paste your content here for SEO optimization..."></textarea>
+                    </div>
+                    <button class="btn generate-btn" onclick="optimizeSEO()">
+                        <i class="fas fa-search-plus me-2"></i>Optimize for SEO
+                    </button>
+                </div>
+                <div class="col-md-6">
+                    <div id="seoResult" class="ai-response" style="display: none;">
+                        <h6>SEO Optimized Content:</h6>
+                        <div id="optimizedContent"></div>
+                        <div class="mt-3">
+                            <h6>SEO Suggestions:</h6>
+                            <ul id="seoSuggestions"></ul>
+                        </div>
+                        <button class="btn copy-btn mt-3" onclick="copyToClipboard('optimizedContent')">
+                            <i class="fas fa-copy me-1"></i>Copy Optimized Text
+                        </button>
+                    </div>
+                    <div class="loading-spinner" id="seoLoading">
+                        <div class="spinner-border text-success" role="status">
+                            <span class="visually-hidden">Optimizing...</span>
+                        </div>
+                        <p class="mt-2">SEO analysis kar raha hai...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Alt Text Generator Section -->
+        <div id="altTextGenerator" class="content-card" style="display: none;">
+            <h5 class="mb-3">
+                <i class="fas fa-tag me-2 text-info"></i>Image Alt Text Generator
+            </h5>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label class="form-label">Image Description</label>
+                        <input type="text" class="form-control" id="imageDescription" placeholder="Describe what you see in the image...">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Image Context</label>
+                        <select class="form-control" id="imageContext">
+                            <option value="service">Service Image</option>
+                            <option value="hero">Hero Banner</option>
+                            <option value="testimonial">Testimonial Photo</option>
+                            <option value="logo">Logo</option>
+                        </select>
+                    </div>
+                    <button class="btn generate-btn" onclick="generateAltText()">
+                        <i class="fas fa-tag me-2"></i>Generate Alt Text
+                    </button>
+                </div>
+                <div class="col-md-6">
+                    <div id="altTextResult" class="ai-response" style="display: none;">
+                        <h6>AI Generated Alt Text:</h6>
+                        <div id="generatedAltText" class="alert alert-info"></div>
+                        <button class="btn copy-btn mt-3" onclick="copyToClipboard('generatedAltText')">
+                            <i class="fas fa-copy me-1"></i>Copy Alt Text
+                        </button>
+                    </div>
+                    <div class="loading-spinner" id="altLoading">
+                        <div class="spinner-border text-info" role="status">
+                            <span class="visually-hidden">Generating...</span>
+                        </div>
+                        <p class="mt-2">Alt text generate kar raha hai...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Email Assistant Section -->
+        <div id="emailAssistant" class="content-card" style="display: none;">
+            <h5 class="mb-3">
+                <i class="fas fa-reply me-2 text-warning"></i>AI Email Assistant
+            </h5>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label class="form-label">Customer Message</label>
+                        <textarea class="form-control" id="customerMessage" rows="4" placeholder="Paste customer's message here..."></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Response Type</label>
+                        <select class="form-control" id="responseType">
+                            <option value="inquiry">General Inquiry</option>
+                            <option value="complaint">Complaint</option>
+                            <option value="feedback">Feedback</option>
+                            <option value="partnership">Partnership</option>
+                        </select>
+                    </div>
+                    <button class="btn generate-btn" onclick="generateEmailReply()">
+                        <i class="fas fa-reply me-2"></i>Generate Reply
+                    </button>
+                </div>
+                <div class="col-md-6">
+                    <div id="emailResult" class="ai-response" style="display: none;">
+                        <h6>AI Generated Email Reply:</h6>
+                        <div id="generatedEmail"></div>
+                        <button class="btn copy-btn mt-3" onclick="copyToClipboard('generatedEmail')">
+                            <i class="fas fa-copy me-1"></i>Copy Email
+                        </button>
+                    </div>
+                    <div class="loading-spinner" id="emailLoading">
+                        <div class="spinner-border text-warning" role="status">
+                            <span class="visually-hidden">Generating...</span>
+                        </div>
+                        <p class="mt-2">Professional reply draft kar raha hai...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI Suggestions -->
+        <div class="content-card">
+            <h5 class="mb-3">
+                <i class="fas fa-lightbulb me-2 text-warning"></i>AI Smart Suggestions
+            </h5>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="suggestion-card">
+                        <h6><i class="fas fa-chart-line text-success me-2"></i>Content Performance</h6>
+                        <p class="mb-2">Your service descriptions can be improved by adding specific benefits and features.</p>
+                        <button class="btn btn-sm btn-outline-primary" onclick="showContentGenerator()">Improve Now</button>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="suggestion-card">
+                        <h6><i class="fas fa-search text-info me-2"></i>SEO Optimization</h6>
+                        <p class="mb-2">Add keywords like "Pakistan logistics", "reliable delivery" to improve search rankings.</p>
+                        <button class="btn btn-sm btn-outline-info" onclick="showSEOOptimizer()">Optimize Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Check if admin is logged in
+        if (!localStorage.getItem('adminLoggedIn')) {
+            window.location.href = 'login.html';
+        }
+
+        function logout() {
+            localStorage.removeItem('adminLoggedIn');
+            window.location.href = 'login.html';
+        }
+
+        // Show/Hide sections
+        function showContentGenerator() {
+            hideAllSections();
+            document.getElementById('contentGenerator').style.display = 'block';
+        }
+
+        function showSEOOptimizer() {
+            hideAllSections();
+            document.getElementById('seoOptimizer').style.display = 'block';
+        }
+
+        function showAltTextGenerator() {
+            hideAllSections();
+            document.getElementById('altTextGenerator').style.display = 'block';
+        }
+
+        function showEmailAssistant() {
+            hideAllSections();
+            document.getElementById('emailAssistant').style.display = 'block';
+        }
+
+        function hideAllSections() {
+            document.getElementById('contentGenerator').style.display = 'none';
+            document.getElementById('seoOptimizer').style.display = 'none';
+            document.getElementById('altTextGenerator').style.display = 'none';
+            document.getElementById('emailAssistant').style.display = 'none';
+        }
+
+        // AI Content Generation
+        function generateContent() {
+            const type = document.getElementById('contentType').value;
+            const topic = document.getElementById('contentTopic').value;
+            const tone = document.getElementById('contentTone').value;
+
+            if (!topic.trim()) {
+                alert('Please enter a topic or keywords!');
+                return;
+            }
+
+            // Show loading
+            document.getElementById('contentLoading').style.display = 'block';
+            document.getElementById('contentResult').style.display = 'none';
+
+            // Simulate AI processing
+            setTimeout(() => {
+                let content = '';
+
+                if (type === 'service') {
+                    content = `Experience our premium ${topic} services designed to meet your logistics needs with unparalleled reliability and efficiency. Our expert team ensures timely delivery across Pakistan, utilizing advanced tracking technology and professional handling procedures. Choose E-DROP for ${topic} solutions that exceed expectations and deliver results.`;
+                } else if (type === 'about') {
+                    content = `E-DROP is Pakistan's leading logistics and ${topic} company, committed to providing exceptional service since our inception. With years of experience in the industry, we have built a reputation for reliability, innovation, and customer satisfaction. Our dedicated team works tirelessly to ensure every ${topic} need is met with the highest standards of quality and professionalism.`;
+                } else if (type === 'marketing') {
+                    content = `Transform your ${topic} experience with E-DROP's comprehensive solutions. From initial planning to final delivery, we handle every aspect with precision and care. Our customer-centric approach ensures that your ${topic} requirements are not just met, but exceeded. Join thousands of satisfied customers who trust E-DROP for their logistics needs.`;
+                }
+
+                document.getElementById('generatedContent').innerHTML = `<p>${content}</p>`;
+                document.getElementById('contentLoading').style.display = 'none';
+                document.getElementById('contentResult').style.display = 'block';
+            }, 2000);
+        }
+
+        // SEO Optimization
+        function optimizeSEO() {
+            const input = document.getElementById('seoInput').value;
+
+            if (!input.trim()) {
+                alert('Please enter content to optimize!');
+                return;
+            }
+
+            document.getElementById('seoLoading').style.display = 'block';
+            document.getElementById('seoResult').style.display = 'none';
+
+            setTimeout(() => {
+                const optimized = input + ' Discover reliable logistics solutions with E-DROP, Pakistan\'s trusted delivery partner.';
+
+                document.getElementById('optimizedContent').innerHTML = `<p>${optimized}</p>`;
+                document.getElementById('seoSuggestions').innerHTML = `
+                    <li>Add keywords like "Pakistan logistics", "reliable delivery"</li>
+                    <li>Include location-based terms for better local SEO</li>
+                    <li>Use action words like "discover", "experience", "transform"</li>
+                `;
+
+                document.getElementById('seoLoading').style.display = 'none';
+                document.getElementById('seoResult').style.display = 'block';
+            }, 1500);
+        }
+
+        // Alt Text Generation
+        function generateAltText() {
+            const description = document.getElementById('imageDescription').value;
+            const context = document.getElementById('imageContext').value;
+
+            if (!description.trim()) {
+                alert('Please describe the image!');
+                return;
+            }
+
+            document.getElementById('altLoading').style.display = 'block';
+            document.getElementById('altTextResult').style.display = 'none';
+
+            setTimeout(() => {
+                let altText = '';
+
+                if (context === 'service') {
+                    altText = `E-DROP ${description} service illustration showing professional logistics operations in Pakistan`;
+                } else if (context === 'hero') {
+                    altText = `E-DROP hero banner featuring ${description} representing reliable logistics and delivery services`;
+                } else if (context === 'testimonial') {
+                    altText = `Customer testimonial photo showing ${description} satisfied with E-DROP logistics services`;
+                } else {
+                    altText = `E-DROP logo and branding featuring ${description} for professional logistics company`;
+                }
+
+                document.getElementById('generatedAltText').textContent = altText;
+                document.getElementById('altLoading').style.display = 'none';
+                document.getElementById('altTextResult').style.display = 'block';
+            }, 1000);
+        }
+
+        // Email Reply Generation
+        function generateEmailReply() {
+            const message = document.getElementById('customerMessage').value;
+            const type = document.getElementById('responseType').value;
+
+            if (!message.trim()) {
+                alert('Please enter the customer message!');
+                return;
+            }
+
+            document.getElementById('emailLoading').style.display = 'block';
+            document.getElementById('emailResult').style.display = 'none';
+
+            setTimeout(() => {
+                let reply = '';
+
+                if (type === 'inquiry') {
+                    reply = `Dear Valued Customer,\n\nThank you for your interest in E-DROP's services. We appreciate you reaching out to us.\n\nWe would be happy to provide you with detailed information about our logistics solutions. Our team specializes in reliable delivery services across Pakistan with real-time tracking and professional handling.\n\nPlease feel free to contact us at info@edrop.com or call 0925-681111 to discuss your specific requirements.\n\nBest regards,\nE-DROP Team\nCustomer Service Department`;
+                } else if (type === 'complaint') {
+                    reply = `Dear Customer,\n\nThank you for bringing this matter to our attention. We sincerely apologize for any inconvenience caused and value your feedback.\n\nWe take customer satisfaction very seriously and would like to resolve this issue immediately. Our customer service team will contact you within 24 hours to address your concerns and ensure complete satisfaction.\n\nPlease contact us at support@edrop.com if you need immediate assistance.\n\nBest regards,\nE-DROP Customer Care Team`;
+                } else {
+                    reply = `Dear Customer,\n\nThank you for your valuable feedback and for choosing E-DROP for your logistics needs. We are delighted to hear about your positive experience.\n\nYour satisfaction is our top priority, and we continuously strive to provide the best service possible. We appreciate you taking the time to share your thoughts with us.\n\nBest regards,\nE-DROP Management Team`;
+                }
+
+                document.getElementById('generatedEmail').innerHTML = `<pre style="white-space: pre-wrap; font-family: inherit;">${reply}</pre>`;
+                document.getElementById('emailLoading').style.display = 'none';
+                document.getElementById('emailResult').style.display = 'block';
+            }, 2000);
+        }
+
+        // Copy to clipboard
+        function copyToClipboard(elementId) {
+            const element = document.getElementById(elementId);
+            const text = element.textContent || element.innerText;
+
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Copied to clipboard!');
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                alert('Copied to clipboard!');
+            });
+        }
+    </script>
+</body>
+</html>

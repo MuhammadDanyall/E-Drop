@@ -1,0 +1,996 @@
+/* --- Global Reset --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+/* --- How Shipping Works Section --- */
+.how-shipping-works {
+  padding: 80px 0;
+  background: #fff;
+}
+
+.how-shipping-works .section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 60px;
+  color: #333;
+}
+
+.how-shipping-works .section-title .highlight {
+  color: #ff6b35;
+}
+
+.shipping-process-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  margin-top: 50px;
+}
+
+.process-card {
+  background: #fff;
+  padding: 40px 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.process-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  border-color: #ff6b35;
+}
+
+.process-icon {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 25px;
+  font-size: 2rem;
+  color: #fff;
+  box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+}
+
+.process-card h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.process-card p {
+  color: #666;
+  line-height: 1.6;
+}
+
+/* --- Services Offered Section --- */
+.services-offered {
+  padding: 80px 0;
+  background: #f8f9fa;
+}
+
+.services-offered .section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 60px;
+  color: #333;
+}
+
+.services-offered .section-title .highlight {
+  color: #ff6b35;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 40px;
+  margin-top: 50px;
+}
+
+.service-offered-card {
+  background: #fff;
+  padding: 40px 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.service-offered-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  border-color: #ff6b35;
+}
+
+.service-icon {
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 25px;
+  font-size: 1.8rem;
+  color: #fff;
+  box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+}
+
+.service-offered-card h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.service-offered-card p {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.service-offered-card ul {
+  text-align: left;
+  color: #777;
+  font-size: 0.95rem;
+}
+
+.service-offered-card ul li {
+  margin-bottom: 8px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.service-offered-card ul li:before {
+  content: "✓";
+  color: #ff6b35;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
+/* --- Download App Section --- */
+.download-app-eshipping {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  color: #fff;
+}
+
+.download-app-eshipping .download-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+}
+
+.download-app-eshipping .download-content {
+  flex: 1;
+  max-width: 500px;
+}
+
+.download-app-eshipping .download-content h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.download-app-eshipping .download-content p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  color: #ccc;
+}
+
+.download-app-eshipping .app-buttons {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.download-app-eshipping .app-button {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.download-app-eshipping .app-button:hover {
+  transform: scale(1.05);
+}
+
+.download-app-eshipping .app-button img {
+  height: 50px;
+  width: auto;
+}
+
+.download-app-eshipping .download-image {
+  flex: 1;
+  text-align: center;
+}
+
+.download-app-eshipping .download-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+
+  .how-shipping-works .section-title,
+  .services-offered .section-title {
+    font-size: 2rem;
+  }
+
+  .shipping-process-grid,
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .download-app-eshipping .download-flex {
+    flex-direction: column;
+    text-align: center;
+    gap: 40px;
+  }
+
+  .download-app-eshipping .download-content h2 {
+    font-size: 2rem;
+  }
+
+  .download-app-eshipping .app-buttons {
+    justify-content: center;
+  }
+}
+
+.hero-wrapper {
+  position: relative;
+  color: #ffffff;
+  /* Overlay + beautiful sea background image */
+  background-image:
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0.85)),
+    url('../pictures/sea_ship.jpg');
+  background-size: cover;
+  /* full coverage look */
+  background-position: center center;
+  /* adjust visible area */
+  background-repeat: no-repeat;
+  background-color: #000;
+  /* fallback color */
+  background-blend-mode: normal;
+  /* can be overlay/multiply for stronger tint */
+
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 4.5rem;
+  /* Added padding to clear fixed navbar */
+  padding-bottom: 120px;
+}
+
+
+/* --- Navbar --- */
+.navbar {
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+}
+
+.nav-links ul {
+  display: flex;
+}
+
+.nav-links li {
+  margin-left: 35px;
+}
+
+.nav-links a {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  padding-bottom: 5px;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.nav-links a.active,
+.nav-links a:hover {
+  color: #f75023;
+  border-bottom: 2px solid #f75023;
+}
+
+
+
+
+
+/* --- Hero Content --- */
+.hero-content {
+  text-align: left;
+  padding: 100px 0;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.hero-content h1 {
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  max-width: 700px;
+}
+
+/* 👇 separate selector — not nested inside */
+.hero-content h1 .highlight {
+  color: #f75023;
+  /* your orange brand color */
+}
+
+
+.hero-content p {
+  font-size: 20px;
+  max-width: 600px;
+}
+
+/* --- Track Shipment Section --- */
+.track-section {
+  background-color: #fff;
+  margin-top: -80px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  padding: 50px 40px;
+  text-align: center;
+  max-width: 850px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  z-index: 10;
+  margin-bottom: 100px;
+}
+
+.track-section h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.track-section p {
+  color: #666;
+  margin-bottom: 25px;
+}
+
+.track-form {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.track-form input {
+  flex: 1;
+  min-width: 260px;
+  padding: 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+}
+
+.track-form button {
+  padding: 14px 28px;
+  background-color: #f75023;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.track-form button:hover {
+  background-color: #d8451e;
+}
+
+/* --- Shipment Info Box --- */
+
+
+
+
+
+
+/* --- Store Badges --- */
+.store-badges {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.store-badges img {
+  height: 50px;
+  width: auto;
+  cursor: pointer;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  filter: brightness(0.95);
+  object-fit: contain;
+}
+
+/* Make Google Play badge visually balanced */
+.store-badges img[alt*="Google Play"] {
+  height: 51px;
+  /* slightly larger to match Apple/Huawei */
+}
+
+.hero-shape {
+  position: absolute;
+  bottom: -40px;
+  /* 👈 Moves it down below hero content */
+  left: 0;
+  width: 100%;
+  height: 120px;
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* Left flipped triangle */
+.hero-shape::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60%;
+  height: 100%;
+  background-color: #222222;
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+
+/* Right flipped triangle */
+.hero-shape::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60%;
+  height: 100%;
+  background-color: #f75023;
+  clip-path: polygon(100% 0, 0 0, 100% 100%);
+}
+
+
+/* --- Responsive --- */
+@media (max-width: 992px) {
+  .hero-content {
+    text-align: center;
+  }
+
+  .hero-content h1 {
+    font-size: 48px;
+  }
+
+  .hero-content p {
+    font-size: 18px;
+    margin: 0 auto 30px;
+  }
+
+  .store-badges {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-content h1 {
+    font-size: 36px;
+  }
+
+  .hero-content p {
+    font-size: 16px;
+  }
+
+
+
+  .store-badges img {
+    height: 42px;
+  }
+}
+
+/* =========================
+   FOOTER STYLES (Updated)
+============================== */
+
+/* --- Root Variables for Easy Customization --- */
+:root {
+  --footer-bg: #222222;
+  /* The main dark background */
+  --footer-brand-color: #F86D5D;
+  /* The orange/coral color */
+  --footer-text: #B0B0B0;
+  /* The standard grey text */
+  --footer-heading: #FFFFFF;
+  /* The white headings ("DISCOVER MORE") */
+  --footer-divider: #555555;
+  /* The <hr> and social border color */
+}
+
+.site-footer {
+  position: relative;
+  background-color: var(--footer-bg);
+  color: var(--footer-text);
+  font-family: Arial, sans-serif;
+  padding-top: 100px;
+  /* space for angled shape */
+  padding-bottom: 20px;
+}
+
+/* --- Orange Upward V-Shape (Positioned ABOVE Footer) --- */
+
+/* This is the parent container. 
+   It MUST have position: relative; for the shape to be positioned correctly. */
+.footer-container {
+  /* Or whatever your main footer tag/class is */
+  position: relative;
+  /* ...your other footer styles (background, padding-top, etc.)... */
+}
+
+
+
+/* Left triangle (Flipped) */
+
+
+/* Right triangle (Flipped) */
+
+
+/* --- Footer Columns --- */
+.footer-container {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+
+
+/* --- Column 1: Contact --- */
+
+
+.contact-info {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contact-info li {
+  margin-bottom: 12px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+}
+
+.contact-info li i {
+  margin-right: 10px;
+  color: var(--footer-brand-color);
+  width: 20px;
+}
+
+/* --- Column 2: Links --- */
+
+
+
+
+
+
+
+
+
+
+/* --- Column 3: Newsletter & Social --- */
+.newsletter-form {
+  display: flex;
+  margin-bottom: 30px;
+  border-bottom: 2px solid var(--footer-divider);
+}
+
+.newsletter-form input[type="email"] {
+  flex-grow: 1;
+  background: transparent;
+  border: none;
+  color: var(--footer-heading);
+  padding: 10px 0;
+  font-size: 0.9rem;
+}
+
+.newsletter-form input[type="email"]::placeholder {
+  color: var(--footer-text);
+  opacity: 1;
+}
+
+.newsletter-form button {
+  background: var(--footer-brand-color);
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 0 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.newsletter-form button:hover {
+  background-color: #d95a4c;
+}
+
+
+
+
+
+
+
+
+
+/* --- Bottom Copyright Bar --- */
+.footer-bottom {
+  max-width: 1200px;
+  margin: 20px auto 0;
+  padding: 0 20px;
+}
+
+.footer-bottom hr {
+  border: 0;
+  border-top: 1px solid var(--footer-divider);
+}
+
+.footer-bottom p {
+  margin-top: 20px;
+  font-size: 0.8rem;
+  color: var(--footer-text);
+  text-align: center;
+}
+
+/* Basic Animations */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.animate-on-scroll.animate-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- Responsive (Mobile) --- */
+@media (max-width: 768px) {
+
+  .track-section {
+    margin-bottom: 130px;
+    /* 100px for the shape + 30px gap */
+  }
+
+  .footer-container {
+    flex-direction: column;
+  }
+
+
+
+  .site-footer {
+    padding-top: 80px;
+  }
+
+
+
+  .footer-bottom p {
+    text-align: center;
+  }
+}
+
+/* Why Choose Us Section */
+.why-choose-us {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.why-choose-us .container {
+  max-width: 1200px;
+}
+
+.why-choose-us .section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.why-choose-us .section-header h2 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.why-choose-us .section-header h2 .highlight {
+  color: #ff6b35;
+}
+
+.why-choose-us .section-header p {
+  font-size: 1.1rem;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.why-choose-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.why-choose-card {
+  background: #fff;
+  padding: 2.5rem 2rem;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #e9ecef;
+}
+
+.why-choose-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.why-choose-icon {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #ff6b35 0%, #e55a2b 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  color: #fff;
+  font-size: 2rem;
+  box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3);
+}
+
+.why-choose-card h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.why-choose-card p {
+  color: #666;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+/* Mobile responsive styles for Why Choose Us */
+@media (max-width: 768px) {
+  .why-choose-us {
+    padding: 60px 0;
+  }
+
+  .why-choose-us .section-header h2 {
+    font-size: 2rem;
+  }
+
+  .why-choose-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .why-choose-card {
+    padding: 2rem 1.5rem;
+  }
+}
+
+/* ========================================================================= */
+/* GLOBAL MOBILE RESPONSIVENESS FIXES (Nav, Containers, Grids, Form widths) */
+/* ========================================================================= */
+
+@media (max-width: 768px) {
+
+  /* Navbar Mobile Fix */
+  .nav-menu.active {
+    display: flex !important;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.98) 0%, rgba(45, 45, 45, 0.98) 100%);
+    padding: 20px 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+  }
+
+  .nav-menu.active li {
+    margin: 10px 0;
+    text-align: center;
+    width: 100%;
+  }
+
+  .nav-menu.active li a {
+    display: block;
+    padding: 10px 0;
+    font-size: 1.1rem;
+  }
+
+  /* Fix Grid Columns / Overflow globally */
+  .services-grid,
+  .why-choose-grid,
+  .shipping-process-grid,
+  .about-container,
+  .footer-container,
+  .features-list,
+  .how-it-works-grid,
+  .driver-info-card,
+  .ride-details-grid,
+  .tech-grid,
+  .why-grid,
+  .cards-grid {
+    grid-template-columns: 1fr !important;
+    flex-direction: column !important;
+  }
+
+  .hero-container,
+  .download-flex,
+  .track-form {
+    flex-direction: column !important;
+    flex-wrap: wrap !important;
+    width: 100% !important;
+  }
+
+  .store-badges {
+    flex-wrap: wrap;
+  }
+
+  /* Restrict large fixed min-widths */
+  .track-form input,
+  .track-form button {
+    min-width: 100% !important;
+  }
+
+  .process-card,
+  .service-offered-card,
+  .why-choose-card {
+    min-width: unset !important;
+    width: 100% !important;
+  }
+
+  /* Image Max Widths */
+  img,
+  video,
+  iframe,
+  .container {
+    max-width: 100% !important;
+    height: auto;
+    box-sizing: border-box;
+  }
+
+  /* Font size adjustments for Mobile-First approach */
+  .hero-title {
+    font-size: 2.2rem !important;
+  }
+
+  .hero-content h1 {
+    font-size: 2.5rem !important;
+  }
+
+  .section-title {
+    font-size: 1.8rem !important;
+  }
+
+  .about-title {
+    font-size: 2rem !important;
+  }
+
+  .services-title {
+    font-size: 2rem !important;
+  }
+
+  .stat-value {
+    font-size: 1.8rem !important;
+  }
+
+  .download-content h2 {
+    font-size: 2rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+
+  /* Tight 320px - 480px constraints */
+  .container {
+    padding: 0 15px !important;
+    width: 100% !important;
+    overflow-x: hidden;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  .hero-content {
+    padding: 60px 0 !important;
+  }
+
+  .track-section {
+    padding: 30px 20px !important;
+    margin-top: -40px !important;
+  }
+
+  .hero-title {
+    font-size: 1.8rem !important;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem !important;
+  }
+
+  .stat-value {
+    font-size: 1.5rem !important;
+  }
+
+  .process-card,
+  .service-offered-card,
+  .why-choose-card {
+    padding: 25px 15px !important;
+  }
+}

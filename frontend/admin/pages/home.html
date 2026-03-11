@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page Management - E-DROP Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .sidebar {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            min-height: 100vh;
+            color: white;
+            position: fixed;
+            width: 250px;
+            left: 0;
+            top: 0;
+            z-index: 100;
+        }
+        .sidebar .nav-link {
+            color: rgba(255,255,255,0.8);
+            padding: 12px 20px;
+            margin: 5px 15px;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        .sidebar .nav-link:hover,
+        .sidebar .nav-link.active {
+            background-color: rgba(255,107,53,0.2);
+            color: #ff6b35;
+        }
+        .sidebar .nav-link i {
+            width: 20px;
+            margin-right: 10px;
+        }
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+        .top-navbar {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 15px 30px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+        }
+        .content-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            padding: 30px;
+            margin-bottom: 20px;
+        }
+        .form-label {
+            font-weight: 600;
+            color: #495057;
+            margin-bottom: 8px;
+        }
+        .btn-save {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+        .btn-save:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(135deg, #e55a2b 0%, #e88516 100%);
+        }
+        .section-preview {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 10px;
+            border: 1px solid #dee2e6;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <nav class="sidebar">
+        <div class="p-3">
+            <h4 class="text-center mb-4">
+                <i class="fas fa-tachometer-alt me-2"></i>
+                E-DROP Admin
+            </h4>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="../../dashboard.html">
+                        <i class="fas fa-home"></i>Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <h6 class="text-uppercase text-muted px-3 mt-3 mb-2">Pages</h6>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="home.html">
+                        <i class="fas fa-home"></i>Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">
+                        <i class="fas fa-info-circle"></i>About
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="services.html">
+                        <i class="fas fa-cogs"></i>Services
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">
+                        <i class="fas fa-envelope"></i>Contact
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <h6 class="text-uppercase text-muted px-3 mt-3 mb-2">Management</h6>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../../services/view.html">
+                        <i class="fas fa-list"></i>Services Management
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../../messages.html">
+                        <i class="fas fa-envelope-open"></i>Contact Messages
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../../media.html">
+                        <i class="fas fa-images"></i>Media
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../../profile.html">
+                        <i class="fas fa-user"></i>Profile
+                    </a>
+                </li>
+                <li class="nav-item mt-3">
+                    <a class="nav-link text-danger" href="#" onclick="logout()">
+                        <i class="fas fa-sign-out-alt"></i>Logout
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Top Navbar -->
+        <div class="top-navbar d-flex justify-content-between align-items-center">
+            <div>
+                <h4 class="mb-0">Home Page Management</h4>
+                <small class="text-muted">Edit homepage content</small>
+            </div>
+            <div class="d-flex align-items-center">
+                <i class="fas fa-user-circle fa-2x text-secondary me-2"></i>
+                <span>Admin</span>
+            </div>
+        </div>
+
+        <!-- Hero Section -->
+        <div class="content-card">
+            <h5 class="mb-3">
+                <i class="fas fa-star me-2 text-warning"></i>Hero Section
+            </h5>
+            <form id="heroForm">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">Main Heading</label>
+                            <input type="text" class="form-control" id="heroHeading" value="Welcome to E-DROP">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Sub Heading</label>
+                            <input type="text" class="form-control" id="heroSubheading" value="Your Trusted Logistics Partner">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">Description</label>
+                            <div class="input-group">
+                                <textarea class="form-control" id="heroDescription" rows="4">We provide comprehensive logistics solutions including E-CAB for transportation, E-Shipping for freight, and E-Cargo for specialized cargo services.</textarea>
+                                <button class="btn btn-outline-info" type="button" onclick="checkSEO()">
+                                    <i class="fas fa-search"></i> SEO Check
+                                </button>
+                            </div>
+                            <div id="seoAnalysis" class="mt-2" style="display: none;">
+                                <div id="seoResults" class="alert alert-info p-2">
+                                    <small><i class="fas fa-brain"></i> AI SEO Analysis loading...</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-save">
+                    <i class="fas fa-save me-2"></i>Save Hero Section
+                </button>
+            </form>
+            <div class="section-preview mt-3">
+                <h6>Preview:</h6>
+                <div id="heroPreview" class="mt-2">
+                    <h2 id="previewHeading">Welcome to E-DROP</h2>
+                    <h4 id="previewSubheading">Your Trusted Logistics Partner</h4>
+                    <p id="previewDescription">We provide comprehensive logistics solutions including E-CAB for transportation, E-Shipping for freight, and E-Cargo for specialized cargo services.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Services Section -->
+        <div class="content-card">
+            <h5 class="mb-3">
+                <i class="fas fa-cogs me-2 text-success"></i>Services Section
+            </h5>
+            <form id="servicesForm">
+                <div class="mb-3">
+                    <label class="form-label">Section Title</label>
+                    <input type="text" class="form-control" id="servicesTitle" value="Our Services">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Section Description</label>
+                    <textarea class="form-control" id="servicesDescription" rows="3">Discover our comprehensive range of logistics and transportation services designed to meet your every need.</textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-save">
+                    <i class="fas fa-save me-2"></i>Save Services Section
+                </button>
+            </form>
+        </div>
+
+        <!-- About Section -->
+        <div class="content-card">
+            <h5 class="mb-3">
+                <i class="fas fa-info-circle me-2 text-info"></i>About Section
+            </h5>
+            <form id="aboutForm">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">About Title</label>
+                            <input type="text" class="form-control" id="aboutTitle" value="About E-DROP">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">Mission Statement</label>
+                            <input type="text" class="form-control" id="missionStatement" value="Connecting People, Delivering Dreams">
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">About Description</label>
+                    <textarea class="form-control" id="aboutDescription" rows="4">E-DROP is Pakistan's leading logistics and transportation company, providing reliable and efficient services across the nation. Our commitment to excellence and customer satisfaction sets us apart.</textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-save">
+                    <i class="fas fa-save me-2"></i>Save About Section
+                </button>
+            </form>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="content-card">
+            <h5 class="mb-3">
+                <i class="fas fa-envelope me-2 text-primary"></i>Contact Section
+            </h5>
+            <form id="contactForm">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">Contact Title</label>
+                            <input type="text" class="form-control" id="contactTitle" value="Get In Touch">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Contact Description</label>
+                            <textarea class="form-control" id="contactDescription" rows="3">Ready to experience the best logistics services? Contact us today and let us handle your transportation needs.</textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">Phone Number</label>
+                            <input type="text" class="form-control" id="phoneNumber" value="0925-681111">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email Address</label>
+                            <input type="email" class="form-control" id="emailAddress" value="info@edrop.com">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Address</label>
+                            <input type="text" class="form-control" id="address" value="Sadar Bazar, Peshawar, KPK">
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-save">
+                    <i class="fas fa-save me-2"></i>Save Contact Section
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Check if admin is logged in
+        if (!localStorage.getItem('adminLoggedIn')) {
+            window.location.href = '../../login.html';
+        }
+
+        function logout() {
+            localStorage.removeItem('adminLoggedIn');
+            window.location.href = '../../login.html';
+        }
+
+        // Live preview for hero section
+        document.getElementById('heroHeading').addEventListener('input', updatePreview);
+        document.getElementById('heroSubheading').addEventListener('input', updatePreview);
+        document.getElementById('heroDescription').addEventListener('input', updatePreview);
+
+        function updatePreview() {
+            document.getElementById('previewHeading').textContent = document.getElementById('heroHeading').value;
+            document.getElementById('previewSubheading').textContent = document.getElementById('heroSubheading').value;
+            document.getElementById('previewDescription').textContent = document.getElementById('heroDescription').value;
+        }
+
+        // Load page data
+        function loadPageData() {
+            fetch('/api/pages/home')
+                .then(response => response.json())
+                .then(data => {
+                    populateForm(data);
+                })
+                .catch(error => {
+                    console.error('Error loading page data:', error);
+                    alert('Failed to load page data');
+                });
+        }
+
+        // Populate form with page data
+        function populateForm(data) {
+            // Hero section
+            document.getElementById('heroHeading').value = data.hero.heading;
+            document.getElementById('heroSubheading').value = data.hero.subheading;
+            document.getElementById('heroDescription').value = data.hero.description;
+
+            // Services section
+            document.getElementById('servicesTitle').value = data.services.title;
+            document.getElementById('servicesDescription').value = data.services.description;
+
+            // About section
+            document.getElementById('aboutTitle').value = data.about.title;
+            document.getElementById('missionStatement').value = data.about.mission;
+            document.getElementById('aboutDescription').value = data.about.description;
+
+            // Contact section
+            document.getElementById('contactTitle').value = data.contact.title;
+            document.getElementById('contactDescription').value = data.contact.description;
+            document.getElementById('phoneNumber').value = data.contact.phone;
+            document.getElementById('emailAddress').value = data.contact.email;
+            document.getElementById('address').value = data.contact.address;
+        }
+
+        // Form submission handlers
+        document.getElementById('heroForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const heroData = {
+                hero: {
+                    heading: document.getElementById('heroHeading').value,
+                    subheading: document.getElementById('heroSubheading').value,
+                    description: document.getElementById('heroDescription').value
+                }
+            };
+
+            updatePage('home', heroData, 'Hero section updated successfully!');
+        });
+
+        document.getElementById('servicesForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const servicesData = {
+                services: {
+                    title: document.getElementById('servicesTitle').value,
+                    description: document.getElementById('servicesDescription').value
+                }
+            };
+
+            updatePage('home', servicesData, 'Services section updated successfully!');
+        });
+
+        document.getElementById('aboutForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const aboutData = {
+                about: {
+                    title: document.getElementById('aboutTitle').value,
+                    mission: document.getElementById('missionStatement').value,
+                    description: document.getElementById('aboutDescription').value
+                }
+            };
+
+            updatePage('home', aboutData, 'About section updated successfully!');
+        });
+
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const contactData = {
+                contact: {
+                    title: document.getElementById('contactTitle').value,
+                    description: document.getElementById('contactDescription').value,
+                    phone: document.getElementById('phoneNumber').value,
+                    email: document.getElementById('emailAddress').value,
+                    address: document.getElementById('address').value
+                }
+            };
+
+            updatePage('home', contactData, 'Contact section updated successfully!');
+        });
+
+        // Helper function to update page
+        function updatePage(pageName, data, successMessage) {
+            fetch(`/api/pages/${pageName}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.success) {
+                    alert(successMessage + ' Website has been updated.');
+                } else {
+                    alert('Failed to update page: ' + (result.error || 'Unknown error'));
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Failed to update page. Please try again.');
+            });
+        }
+
+        // AI SEO Analysis
+        function checkSEO() {
+            const description = document.getElementById('heroDescription').value;
+            const seoResults = document.getElementById('seoResults');
+            const seoAnalysis = document.getElementById('seoAnalysis');
+
+            seoAnalysis.style.display = 'block';
+            seoResults.innerHTML = '<small><i class="fas fa-brain"></i> AI SEO Analysis loading...</small>';
+
+            // Simulate AI SEO analysis
+            setTimeout(() => {
+                const analysis = analyzeSEO(description);
+                seoResults.innerHTML = analysis;
+            }, 1500);
+        }
+
+        function analyzeSEO(text) {
+            let score = 0;
+            let suggestions = [];
+
+            // Length check
+            if (text.length < 50) {
+                suggestions.push('⚠️ Description is too short (under 50 characters)');
+            } else if (text.length > 160) {
+                suggestions.push('⚠️ Description is too long (over 160 characters)');
+                score -= 10;
+            } else {
+                suggestions.push('✅ Description length is optimal');
+                score += 20;
+            }
+
+            // Keyword check
+            const keywords = ['logistics', 'transportation', 'shipping', 'cargo', 'delivery'];
+            const foundKeywords = keywords.filter(keyword => text.toLowerCase().includes(keyword));
+
+            if (foundKeywords.length === 0) {
+                suggestions.push('⚠️ No primary keywords found (logistics, transportation, shipping)');
+            } else {
+                suggestions.push(`✅ Found ${foundKeywords.length} relevant keywords: ${foundKeywords.join(', ')}`);
+                score += foundKeywords.length * 15;
+            }
+
+            // Call-to-action check
+            if (text.toLowerCase().includes('we provide') || text.toLowerCase().includes('our services')) {
+                suggestions.push('✅ Good service description');
+                score += 10;
+            }
+
+            // Uniqueness score
+            if (text.includes('comprehensive') || text.includes('reliable') || text.includes('professional')) {
+                suggestions.push('✅ Good descriptive words used');
+                score += 10;
+            }
+
+            let scoreColor = 'danger';
+            let scoreText = 'Poor';
+            if (score >= 60) {
+                scoreColor = 'success';
+                scoreText = 'Excellent';
+            } else if (score >= 40) {
+                scoreColor = 'warning';
+                scoreText = 'Good';
+            }
+
+            return `
+                <div class="mb-2">
+                    <strong>SEO Score: <span class="badge bg-${scoreColor}">${score}/100 - ${scoreText}</span></strong>
+                </div>
+                <div>
+                    ${suggestions.map(s => `<small class="d-block">${s}</small>`).join('')}
+                </div>
+                <div class="mt-2">
+                    <small class="text-muted">
+                        <i class="fas fa-lightbulb text-warning"></i>
+                        <strong>AI Suggestion:</strong> Try adding keywords like "fast", "reliable", "professional" for better SEO.
+                    </small>
+                </div>
+            `;
+        }
+
+        // Load page data when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            loadPageData();
+        });
+    </script>
+</body>
+</html>
