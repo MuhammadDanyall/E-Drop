@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frequently Asked Questions - E Drop</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Specific Styles for Premium FAQ Page */
+        :root {
+            --primary-orange: #ff6b35;
+            --primary-gradient: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
+            --bg-color: #f4f7f6;
+            --text-main: #2b2d42;
+            --text-muted: #6c757d;
+            --glass-bg: rgba(255, 255, 255, 0.95);
+        }
+
+        /* Base Styles that were missing */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Hero Section setup */
+        .faq-hero {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            padding: 80px 20px 150px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Ambient floating orbs in background */
+        .faq-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 107, 53, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .faq-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            right: -5%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 140, 66, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .faq-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .back-nav {
+            position: absolute;
+            top: 30px;
+            left: 5%;
+            z-index: 10;
+        }
+
+        .back-nav a {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .back-nav a i {
+            margin-right: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .back-nav a:hover {
+            background: var(--primary-gradient);
+            border-color: transparent;
+            box-shadow: 0 10px 20px rgba(255, 107, 53, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .back-nav a:hover i {
+            transform: translateX(-4px);
+        }
+
+        .faq-hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 15px;
+            line-height: 1.2;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            text-transform: uppercase;
+        }
+
+        .faq-hero .subtitle {
+            font-size: 1.1rem;
+            color: #a0aab2;
+            font-weight: 400;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Main Content Container */
+        .faq-main {
+            max-width: 1000px;
+            margin: -80px auto 80px auto;
+            position: relative;
+            z-index: 5;
+            padding: 0 20px;
+        }
+
+        /* Leveraging existing styles but overriding container width/padding */
+        .faq-category {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 30px 40px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
+            border: 1px solid white;
+            margin-bottom: 30px;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-category:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+        }
+
+        .category-title {
+            font-size: 1.4rem;
+            color: var(--text-main);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 15px;
+        }
+
+        .category-title i {
+            color: var(--primary-orange);
+            font-size: 1.5rem;
+        }
+
+        /* Animations */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .faq-hero {
+                padding: 100px 20px 100px 20px;
+            }
+
+            .back-nav {
+                top: 20px;
+                left: 20px;
+            }
+
+            .faq-hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .faq-main {
+                margin-top: -50px;
+            }
+
+            .faq-category {
+                padding: 25px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Premium Preloader -->
+    <div id="preloader">
+        <div class="preloader-content">
+            <div class="loader-truck"><img src="../pictures/logo.jpeg" alt="E-Drop Logo"
+                    style="width: 80px; height: 80px; object-fit: cover; border-radius: 50%; box-shadow: 0 0 20px rgba(255, 107, 53, 0.5);">
+            </div>
+            <div class="loader-track">
+                <div class="loader-progress"></div>
+            </div>
+            <div class="loader-text">E-DROP</div>
+        </div>
+    </div>
+
+    <!-- Custom Cursor -->
+
+
+
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../pictures/logo.jpeg" alt="E-DROP Logo" class="logo-img">
+                    <h1> E-DROP</h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html#home" class="active">HOME</a></li>
+                    <li><a href="index.html#about">ABOUT US</a></li>
+                    <li><a href="index.html#services">SERVICE</a></li>
+                    <li><a href="index.html#team">TEAM</a></li>
+                    <li><a href="index.html#testimonials">REVIEWS</a></li>
+                    <li><a href="index.html#faq">HELP CENTER</a></li>
+
+                    <li><a href="index.html#contact">CONTACT US</a></li>
+                    <li><a href="#" data-auth-type="login" id="login-btn">LOGIN</a></li>
+                    <li><a href="#" data-auth-type="signup" id="signup-btn">SIGN UP</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="faq-hero">
+        <div class="faq-hero-content fade-in-up">
+            <h1>Help Center</h1>
+            <p class="subtitle">Detailed answers to everything you need to know about E Drop's logistics network,
+                tracking, payments, and future vision.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="faq-main">
+
+        <!-- Category 1 -->
+        <div class="faq-category fade-in-up" style="transition-delay: 0.1s;">
+            <h3 class="category-title"><i class="fas fa-info-circle"></i> General Questions</h3>
+            <div class="faq-accordion">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What is E Drop?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>E Drop is an integrated logistics and transport platform specifically designed for Kohat,
+                            providing Cab, Cargo, and Shipping services in one place.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Is E Drop available outside of Kohat?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Currently, we are focusing on establishing a strong foundation in Kohat, but our vision is to
+                            expand throughout the region.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What makes E Drop different from other courier services?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Unlike traditional services, E Drop offers a unified system for both passenger transport
+                            (Cabs) and logistics (Cargo) with a focus on modern tech like real-time tracking.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Category 2 -->
+        <div class="faq-category fade-in-up" style="transition-delay: 0.2s;">
+            <h3 class="category-title"><i class="fas fa-mobile-alt"></i> Booking & App</h3>
+            <div class="faq-accordion">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Can I book a ride directly from the website?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>No, the website is primarily for information and tracking purposes; all bookings must be made
+                            through our dedicated Mobile App.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Do I need an account to use E Drop?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes, you must sign up on the mobile app to book services, though you can track shipments on
+                            the website without logging in.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What happens if I forget my Tracking ID?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>You can view your complete history of bookings and tracking IDs by logging into your account
+                            on the mobile app.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Category 3 -->
+        <div class="faq-category fade-in-up" style="transition-delay: 0.3s;">
+            <h3 class="category-title"><i class="fas fa-box-open"></i> Cargo & Shipping</h3>
+            <div class="faq-accordion">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What types of items can I ship?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>We specialize in the safe transport of various items, with a specific focus on E-waste
+                            management like mobiles, laptops, and batteries.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        How are the charges calculated for Cargo?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Fares are dynamically calculated based on two main factors: the total Weight of the package
+                            and the total Distance to the destination.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Category 4: Newly Added -->
+        <div class="faq-category fade-in-up" style="transition-delay: 0.3s;">
+            <h3 class="category-title"><i class="fas fa-truck-loading"></i> Advanced Logistics</h3>
+            <div class="faq-accordion">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What happens if my cargo is damaged during transit?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>We take the utmost care of your belongings. However, in the rare event of damage, E Drop has
+                            a dispute resolution system. Users can report the issue via the app within 24 hours with
+                            photos of the item for an investigation.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Is there a minimum or maximum weight limit for Cargo?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>There is no minimum weight, but for very small items, we recommend using the "Mini-Parcel"
+                            option. The maximum weight depends on the vehicle type (Loader, Pickup, or Truck) selected
+                            during the booking process in the app.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Do you provide packaging materials?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Currently, users are required to pack their items securely. However, for E-waste (Laptops,
+                            Mobiles), our collectors provide specialized anti-static bags to ensure electronic safety.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Category 5: Extended -->
+        <div class="faq-category fade-in-up" style="transition-delay: 0.4s;">
+            <h3 class="category-title"><i class="fas fa-shield-alt"></i> Security & Technology</h3>
+            <div class="faq-accordion">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        How is the "Estimated Time of Arrival" (ETA) calculated?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Our system uses a combination of distance data and real-time traffic analysis algorithms to
+                            provide the most accurate ETA for both Cabs and Cargo.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        How unique is the Tracking ID?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Each Tracking ID is a unique alphanumeric code (e.g., ED-KJ892) generated by our backend
+                            algorithm. It is indexed in our database for O(1) search complexity, ensuring instant
+                            results when you track your package.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What if the driver/collector app goes offline during a trip?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>The app is designed to cache location data locally. Once the connection is restored, the data
+                            is synced with the main database so that the user's tracking screen is updated.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Is my personal data safe with E Drop?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Absolutely. All user data, including names and locations, is stored in a secure database and
+                            is never shared with third parties.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Category 6: Newly Added -->
+        <div class="faq-category fade-in-up" style="transition-delay: 0.5s;">
+            <h3 class="category-title"><i class="fas fa-money-bill-wave"></i> Payments & Cancellations</h3>
+            <div class="faq-accordion">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Can I cancel a booking after the driver has arrived?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes, but a small "Cancellation Fee" may apply to compensate the driver for their time and
+                            fuel. If cancelled before the driver departs, no fee is charged.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Are there any hidden charges in the fare?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>No. The fare shown on the app after calculating weight and distance is final. It includes all
+                            service charges and taxes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Category 7: Newly Added & Extended -->
+        <div class="faq-category fade-in-up" style="transition-delay: 0.6s;">
+            <h3 class="category-title"><i class="fas fa-map-marked-alt"></i> Local Operations & Future</h3>
+            <div class="faq-accordion">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Does E Drop operate 24/7 in Kohat?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Our app is active 24/7. However, the availability of Cabs and Cargo collectors may vary
+                            during late-night hours based on driver availability in specific sectors of Kohat.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Can I book multiple Cabs or Cargo trucks at once?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes, the app allows users to manage multiple active bookings simultaneously under the "My
+                            Bookings" section.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What is the 'Future Vision' of E Drop?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>We aim to pioneer Drone Delivery and autonomous logistics to make transport faster and more
+                            efficient in our region.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h3>E-DROP</h3>
+                    <p>Moving Was Never So Easy</p>
+                    <p>Fast & Secure Move</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html#home">Home</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#services">Services</a></li>
+                        <li><a href="index.html#team">Team</a></li>
+                        <li><a href="index.html#testimonials">Testimonials</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-phone"></i> +92 321-125687</p>
+                    <p><i class="fas fa-envelope"></i> sachdeva@coin.sin</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Sadar Bazar, Peshawar, Kpk</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-diagonal"></div>
+
+        <!-- Sub Footer for Legal & Extra Links -->
+        <div class="sub-footer"
+            style="background: #111; padding: 25px 20px; border-top: 1px solid #333; position: relative; z-index: 2; text-align: center;">
+            <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; margin-bottom: 12px;">
+                <a href="faq.html"
+                    style="color: #bbb; text-decoration: none; font-size: 0.95rem; transition: color 0.3s ease;"
+                    onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#bbb'">FAQ</a>
+                <a href="privacy-policy.html"
+                    style="color: #bbb; text-decoration: none; font-size: 0.95rem; transition: color 0.3s ease;"
+                    onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#bbb'">Privacy Policy</a>
+                <a href="terms-conditions.html"
+                    style="color: #bbb; text-decoration: none; font-size: 0.95rem; transition: color 0.3s ease;"
+                    onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#bbb'">Terms & Conditions</a>
+            </div>
+            <p style="margin: 0; font-size: 0.85rem; color: #777;">&copy; 2026 E Drop. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Load the main script bundle to ensure the FAQ accordion script fires -->
+    <script src="script.js?v=final_clean"></script>
+
+    <script>
+        // Smooth scroll animation observer for the faq page components
+        document.addEventListener("DOMContentLoaded", () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in-up').forEach(element => {
+                observer.observe(element);
+            });
+
+            // Immediately show hero elements
+            setTimeout(() => {
+                document.querySelectorAll('.faq-hero-content').forEach(el => el.classList.add('visible'));
+            }, 100);
+
+            // Initialize FAQ Accordion exclusively for this page to bypass script.js errors
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const questionBtn = item.querySelector('.faq-question');
+                if (questionBtn) {
+                    questionBtn.addEventListener('click', () => {
+                        const isActive = item.classList.contains('active');
+
+                        // Close all items
+                        faqItems.forEach(otherItem => {
+                            otherItem.classList.remove('active');
+                            const otherAnswer = otherItem.querySelector('.faq-answer');
+                            if (otherAnswer) {
+                                otherAnswer.style.maxHeight = null;
+                            }
+                        });
+
+                        // Toggle clicked item
+                        if (!isActive) {
+                            item.classList.add('active');
+                            const answer = item.querySelector('.faq-answer');
+                            if (answer) {
+                                answer.style.maxHeight = answer.scrollHeight + 'px';
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

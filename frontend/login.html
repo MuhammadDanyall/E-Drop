@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Premium Preloader -->
+    <div id="preloader">
+        <div class="preloader-content">
+            <div class="loader-truck"><img src="../pictures/logo.jpeg" alt="E-Drop Logo" style="width: 80px; height: 80px; object-fit: cover; border-radius: 50%; box-shadow: 0 0 20px rgba(255, 107, 53, 0.5);"></div>
+            <div class="loader-track">
+                <div class="loader-progress"></div>
+            </div>
+            <div class="loader-text">E-DROP</div>
+        </div>
+    </div>
+
+    <!-- Custom Cursor -->
+    
+
+    <div class="auth-form-content">
+        <h2>LOGIN</h2>
+        <form id="login-form">
+            <div class="form-group">
+                <label for="login-email">Email</label>
+                <input type="email" id="login-email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="login-password">Password</label>
+                <input type="password" id="login-password" name="password" placeholder="Enter your password" required>
+            </div>
+            <button type="submit" class="auth-submit-btn">Login</button>
+        </form>
+        <p>Don't have an account? <a href="#" id="show-signup">Sign Up</a></p>
+    </div>
+</body>
+</html>

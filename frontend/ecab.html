@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-CAB - Fast, Reliable & Safe | E-DROP</title>
+    <!-- Main styles -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- E-Cab specific styles, should come after main styles -->
+    <link rel="stylesheet" href="ecab.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="mobile-fixes.css">
+</head>
+
+<body>
+
+    <!-- Premium Preloader -->
+    <div id="preloader">
+        <div class="preloader-content">
+            <div class="loader-truck"><img src="../pictures/logo.jpeg" alt="E-Drop Logo"
+                    style="width: 80px; height: 80px; object-fit: cover; border-radius: 50%; box-shadow: 0 0 20px rgba(255, 107, 53, 0.5);">
+            </div>
+            <div class="loader-track">
+                <div class="loader-progress"></div>
+            </div>
+            <div class="loader-text">E-DROP</div>
+        </div>
+    </div>
+
+    <!-- Custom Cursor -->
+
+
+
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../pictures/logo.jpeg" alt="E-DROP Logo" class="logo-img">
+                    <h1> E-DROP</h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html#home" class="active">HOME</a></li>
+                    <li><a href="index.html#about">ABOUT US</a></li>
+                    <li><a href="index.html#services">SERVICE</a></li>
+                    <li><a href="index.html#team">TEAM</a></li>
+                    <li><a href="index.html#testimonials">REVIEWS</a></li>
+                    <li><a href="index.html#faq">HELP CENTER</a></li>
+
+                    <li><a href="index.html#contact">CONTACT US</a></li>
+                    <li><a href="#" data-auth-type="login" id="login-btn">LOGIN</a></li>
+                    <li><a href="#" data-auth-type="signup" id="signup-btn">SIGN UP</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- 1️⃣ Hero Section: "Our Footprint in Pakistan" -->
+        <section class="ecab-hero-map">
+            <div class="map-overlay">
+                <div class="hero-map-content">
+                    <h1>WE ARE FAST, RELIABLE, AND <span class="orange-highlight">SAFE</span></h1>
+                    <p>Ride with E-Cab to get to your end destination on time, safely, and at a minimal cost.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2️⃣ The Mobile App Interface (UI/UX) -->
+        <section class="mobile-app-section animate-on-scroll">
+            <div class="container app-interface-container">
+                <div class="app-info animate-on-scroll fade-in-left">
+                    <h2 class="animate-on-scroll">Real-Time Tracking & Communication</h2>
+                    <p>Our app provides a seamless experience for tracking your ride and staying in touch with your
+                        driver.</p>
+                    <div class="features-list">
+                        <div class="feature-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Accurate Location Header</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-route"></i>
+                            <span>Live GPS Map</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-car-side"></i>
+                            <span>Driver Arrival Updates</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <span>Instant Call & Message</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="mobile-app-ui">
+                    <img src="../pictures/Mobile_app.png" alt="Mobile App UI" class="app-screenshot">
+                    <div class="driver-arrival-card">
+                        <div class="driver-info">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwxfHxkcm9wJTIwcmlkZXIlMjBwb3J0cmFpdHxlbnwwfHx8fDE3MDYwMDQ4MzF8MA&ixlib=rb-4.0.3&q=80&w=1080"
+                                alt="Driver Profile" class="driver-profile-pic">
+                            <div class="driver-details-text">
+                                <p>Bykea on his way</p>
+                                <span class="location-header">20 C, 26th Street, Tauheed Commercial Ar</span>
+                            </div>
+                        </div>
+                        <div class="eta-actions">
+                            <span class="eta-timer">1 min</span>
+                            <div class="action-icons">
+                                <a href="#"><i class="fas fa-phone"></i></a>
+                                <a href="#"><i class="fas fa-comment"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3️⃣ Step-by-Step Booking Process ("How Ride Works") -->
+        <section class="how-ride-works animate-on-scroll">
+            <div class="container">
+                <h2 class="section-title animate-on-scroll fade-in-up">How Your Ride <span
+                        class="orange-highlight">Works</span></h2>
+                <div class="how-it-works-grid">
+                    <div class="animate-on-scroll fade-in-up service-card">
+                        <div class="icon-wrapper">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3>1. Launch App</h3>
+                        <p>Open the E-Drop app and select the Ride icon to begin your journey.</p>
+                    </div>
+                    <div class="animate-on-scroll fade-in-up service-card">
+                        <div class="icon-wrapper">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3>2. Pickup Details</h3>
+                        <p>Choose your vehicle type, enter pickup and drop-off locations, and get an estimated fare.</p>
+                    </div>
+                    <div class="animate-on-scroll fade-in-up service-card">
+                        <div class="icon-wrapper">
+                            <i class="fas fa-car-side"></i>
+                        </div>
+                        <h3>3. The Ride</h3>
+                        <p>A GPS-tracked, security-vetted partner is assigned to ensure a safe and fully insured ride.
+                        </p>
+                    </div>
+                    <div class="animate-on-scroll fade-in-up service-card">
+                        <div class="icon-wrapper">
+                            <i class="fas fa-wallet"></i>
+                        </div>
+                        <h3>4. Payment & Feedback</h3>
+                        <p>Pay conveniently with cash or E-Drop Wallet, then rate your driver's service.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 5️⃣ Why Choose Us Section -->
+        <section class="why-choose-us animate-on-scroll">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <h2 class="section-title animate-on-scroll fade-in-up">Why Choose <span
+                            class="orange-highlight">E-CAB?</span></h2>
+                    <p class="section-subtitle animate-on-scroll fade-in-left">Discover what makes us the preferred
+                        choice for millions of riders across Pakistan</p>
+                </div>
+                <div class="why-choose-grid">
+                    <div class="why-choose-card">
+                        <div class="why-choose-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Safety First</h3>
+                        <p>All our drivers undergo thorough background checks and vehicle inspections to ensure your
+                            safety.</p>
+                    </div>
+                    <div class="why-choose-card">
+                        <div class="why-choose-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3>Lightning Fast</h3>
+                        <p>Get picked up within minutes with our smart matching algorithm and real-time tracking.</p>
+                    </div>
+                    <div class="why-choose-card">
+                        <div class="why-choose-icon">
+                            <i class="fas fa-wallet"></i>
+                        </div>
+                        <h3>Affordable Rates</h3>
+                        <p>Competitive pricing with transparent fares and no hidden charges.</p>
+                    </div>
+                    <div class="why-choose-card">
+                        <div class="why-choose-icon">
+                            <i class="fas fa-user-friends"></i>
+                        </div>
+                        <h3>Professional Drivers</h3>
+                        <p>Experienced, courteous drivers trained to provide excellent service every time.</p>
+                    </div>
+                    <div class="why-choose-card">
+                        <div class="why-choose-icon">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <h3>Nationwide Coverage</h3>
+                        <p>Available in major cities across Pakistan with expanding coverage.</p>
+                    </div>
+                    <div class="why-choose-card">
+                        <div class="why-choose-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h3>24/7 Support</h3>
+                        <p>Round-the-clock customer support to assist you whenever you need help.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5️⃣ Platform Integration & Download -->
+        <section class="download-app-ecab animate-on-scroll">
+            <div class="container download-flex">
+                <div class="download-content animate-on-scroll fade-in-left">
+                    <h2 class="animate-on-scroll">Get the E-Drop App Today!</h2>
+                    <p>Experience fast, reliable, and safe rides by downloading our app from your preferred store.</p>
+                    <div class="app-buttons">
+                        <a href="#" class="app-button">
+                            <img src="../pictures/google_store.png" alt="Google Play">
+                        </a>
+                        <a href="#" class="app-button">
+                            <img src="../pictures/apple_store.png" alt="App Store">
+                        </a>
+                        <a href="#" class="app-button">
+                            <img src="../pictures/huawei_store.png" alt="AppGallery">
+                        </a>
+                    </div>
+                </div>
+                <div class="download-image">
+                    <img src="https://images.unsplash.com/photo-1550953110-38148b61c7d2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwxfHxtb2JpbGUlMjBhcHAlMjBpbnRlcmZhY2V8ZW58MHx8fHwxNzA2MDEwNjk2fDA&ixlib=rb-4.0.3&q=80&w=1080"
+                        alt="Phone with App">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h3>E-DROP</h3>
+                    <p>Moving Was Never So Easy</p>
+                    <p>Fast & Secure Move</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html#home">Home</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#services">Services</a></li>
+                        <li><a href="index.html#team">Team</a></li>
+                        <li><a href="index.html#testimonials">Testimonials</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-phone"></i> +92 321-125687</p>
+                    <p><i class="fas fa-envelope"></i> sachdeva@coin.sin</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Sadar Bazar, Peshawar, Kpk</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-diagonal"></div>
+
+        <!-- Sub Footer for Legal & Extra Links -->
+        <div class="sub-footer"
+            style="background: #111; padding: 25px 20px; border-top: 1px solid #333; position: relative; z-index: 2; text-align: center;">
+            <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; margin-bottom: 12px;">
+                <a href="faq.html"
+                    style="color: #bbb; text-decoration: none; font-size: 0.95rem; transition: color 0.3s ease;"
+                    onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#bbb'">FAQ</a>
+                <a href="privacy-policy.html"
+                    style="color: #bbb; text-decoration: none; font-size: 0.95rem; transition: color 0.3s ease;"
+                    onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#bbb'">Privacy Policy</a>
+                <a href="terms-conditions.html"
+                    style="color: #bbb; text-decoration: none; font-size: 0.95rem; transition: color 0.3s ease;"
+                    onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#bbb'">Terms & Conditions</a>
+            </div>
+            <p style="margin: 0; font-size: 0.85rem; color: #777;">&copy; 2026 E Drop. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

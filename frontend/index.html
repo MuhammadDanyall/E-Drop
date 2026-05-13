@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-DROP - Moving Was Never So Easy</title>
+    <style>
+        /* #auth-modal { display: none !important; } */
+    </style>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- AI Features Scripts -->
+    <script src="ai-chatbot.js"></script>
+    <script src="ai-recommendations.js"></script>
+    <link rel="stylesheet" href="mobile-fixes.css">
+</head>
+
+<body>
+
+    <!-- Premium Preloader -->
+    <div id="preloader">
+        <div class="preloader-content">
+            <div class="loader-truck"><img src="../pictures/logo.jpeg" alt="E-Drop Logo"
+                    style="width: 80px; height: 80px; object-fit: cover; border-radius: 50%; box-shadow: 0 0 20px rgba(255, 107, 53, 0.5);">
+            </div>
+            <div class="loader-track">
+                <div class="loader-progress"></div>
+            </div>
+            <div class="loader-text">E-DROP</div>
+        </div>
+    </div>
+
+    <!-- Custom Cursor -->
+
+
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress">
+        <div class="scroll-progress-bar"></div>
+    </div>
+
+
+    <!-- Scroll to Top Button -->
+    <a href="#home" class="scroll-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../pictures/logo.jpeg" alt="E-DROP Logo" class="logo-img">
+                    <h1> E-DROP</h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html#home" class="active">HOME</a></li>
+                    <li><a href="index.html#about">ABOUT US</a></li>
+                    <li><a href="index.html#services">SERVICE</a></li>
+                    <li><a href="index.html#team">TEAM</a></li>
+                    <li><a href="index.html#testimonials">REVIEWS</a></li>
+                    <li><a href="index.html#faq">HELP CENTER</a></li>
+
+                    <li><a href="index.html#contact">CONTACT US</a></li>
+                    <li><a href="#" data-auth-type="login" id="login-btn">LOGIN</a></li>
+                    <li><a href="#" data-auth-type="signup" id="signup-btn">SIGN UP</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section (no container image, just previous structure) -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content animate-on-scroll">
+                <h2 class="hero-subtitle animate-on-scroll fade-in-left">FAST & SECURE MOVE</h2>
+                <h1 class="hero-title animate-on-scroll fade-in-right">
+                    MOVING<br>
+                    WAS NEVER<br>
+                    <span>SO EASY</span>
+                </h1>
+                <a href="#contact" class="cta-button animate-on-scroll scale-in magnetic">GET STARTED</a>
+            </div>
+            <!-- Hero Statistics -->
+            <div class="hero-stats">
+                <div class="stat-item animate-on-scroll fade-in-right">
+                    <div class="stat-label">RELOCATION</div>
+                    <div class="stat-value counter-number" data-target="80">0</div>
+                    <div class="stat-suffix">+</div>
+                </div>
+                <div class="stat-item animate-on-scroll fade-in-right">
+                    <div class="stat-label">CLIENT</div>
+                    <div class="stat-value counter-number" data-target="12000">0</div>
+                    <div class="stat-suffix">K</div>
+                </div>
+                <div class="stat-item animate-on-scroll fade-in-right">
+                    <div class="stat-label">MOVING HOUSE</div>
+                    <div class="stat-value counter-number" data-target="150">0</div>
+                    <div class="stat-suffix">+</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="about animate-on-scroll">
+        <div class="about-container">
+            <div class="about-image">
+                <img src="../pictures/Delivery_man.png" alt="E-DROP Delivery Professional">
+                <div class="experience-badge">
+                    <div class="badge-number">23</div>
+                    <div class="badge-text">YEARS OF EXPERIENCE</div>
+                </div>
+            </div>
+            <div class="about-content">
+                <div class="section-label">
+                    <span class="label-line"></span>
+                    <span class="label-text">ABOUT US</span>
+                </div>
+                <h2 class="animate-on-scroll fade-in-up about-title">
+                    TRANSPORT & <span>LOGISTICS</span>
+                </h2>
+                <div class="about-description">
+                    <p>
+                        E-DROP is committed to revolutionizing transportation and logistics by providing simple, fast,
+                        and reliable solutions that connect people and businesses seamlessly. Our mission is to make
+                        every journey smooth and stress-free, from the moment you book to the final delivery.
+                    </p>
+                    <p>
+                        We offer innovative services including eCab for quick and comfortable rides, eShip for secure
+                        parcel delivery, and eCargo for comprehensive freight and logistics management. With our
+                        customer-first approach, we prioritize safety, timeliness, and peace of mind in every
+                        interaction.
+                    </p>
+                </div>
+                <div class="about-buttons">
+                    <a href="about.html" class="cta-button magnetic">LEARN MORE</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section (all images swapped to Unsplash originals) -->
+    <section id="services" class="services animate-on-scroll">
+        <div class="services-container">
+            <h2 class="services-title animate-on-scroll fade-in-left">
+                PRECISE & <span>HARDWORKING</span>
+            </h2>
+            <div class="services-grid">
+                <!-- E-CAB -->
+                <div class="service-card magnetic" data-service="ecab">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                            alt="E-CAB Taxi Service">
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-name">E-CAB</h3>
+                        <p class="service-description">Reliable, safe, and comfortable rides available at your
+                            fingertips.</p>
+                        <a href="ecab.html" class="service-link">LEARN MORE</a>
+                    </div>
+                </div>
+
+                <!-- E-SHIPPING -->
+                <div class="service-card magnetic" data-service="eshipping">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                            alt="E-SHIPPING Cargo Vessel">
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-name">E-SHIPPING</h3>
+                        <p class="service-description">Fast and secure parcel delivery from door-to-door with careful
+                            handling.</p>
+                        <a href="eshipping.html" class="service-link">LEARN MORE</a>
+                    </div>
+                </div>
+
+                <!-- E-CARGO -->
+                <div class="service-card magnetic" data-service="ecargo">
+                    <div class="service-image">
+                        <img src="../pictures/container_1.png" alt="E-CARGO Delivery Truck">
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-name">E-CARGO</h3>
+                        <p class="service-description">Simple and secure freight and parcel logistics management.</p>
+                        <a href="ecargo.html" class="service-link">LEARN MORE</a>
+                    </div>
+                </div>
+
+                <!-- E-DARI -->
+                <div class="service-card magnetic">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1570125909232-eb263c188f7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                            alt="E-DARI Intercity Bus">
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-name">E-DARI</h3>
+                        <p class="service-description">Reliable intercity passenger service with online booking for
+                            buses or cars.</p>
+                        <a href="#contact" class="service-link">GET STARTED</a>
+                    </div>
+                </div>
+
+                <!-- E-DAIRA -->
+                <div class="service-card magnetic">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                            alt="E-DAIRA Vehicle Rental">
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-name">E-DAIRA</h3>
+                        <p class="service-description">Vehicle rental service for personal or business use available on
+                            a daily or weekly basis.</p>
+                        <a href="#contact" class="service-link">GET STARTED</a>
+                    </div>
+                </div>
+
+                <!-- E-DRONE -->
+                <div class="service-card magnetic">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1473968512647-3e447244af8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                            alt="E-DRONE Delivery Drone">
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-name">E-DRONE</h3>
+                        <p class="service-description">Futuristic drone delivery service designed for instant delivery
+                            of emergency or small items.</p>
+                        <a href="#contact" class="service-link">GET STARTED</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials animate-on-scroll">
+        <div class="testimonials-container">
+            <div class="testimonials-header">
+                <div class="section-label">
+                    <span class="label-line"></span>
+                    <span class="label-text">TESTIMONIALS</span>
+                </div>
+                <h2 class="animate-on-scroll fade-in-up testimonials-title">
+                    OUR <span>HAPPY</span> CUSTOMERS
+                </h2>
+            </div>
+
+            <div class="testimonials-content">
+                <div class="testimonials-image">
+                    <img
+                        src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80">
+                </div>
+
+                <div class="testimonials-carousel">
+                    <div class="carousel-container">
+                        <div class="testimonial-slide active">
+                            <div class="testimonial-card">
+                                <div class="testimonial-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <p class="testimonial-text">
+                                    "E-DROP made our office relocation incredibly smooth. Professional service and
+                                    timely delivery. Highly recommended!"
+                                </p>
+                                <div class="testimonial-author">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80"
+                                        alt="Javeed Aslam">
+                                    <div class="author-info">
+                                        <h4>JAVEED ASLAM</h4>
+                                        <p>Lahore</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="testimonial-card">
+                                <div class="testimonial-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <p class="testimonial-text">
+                                    "The E-Cab service is fantastic! Clean vehicles, courteous drivers, and always on
+                                    time. My go-to transportation solution."
+                                </p>
+                                <div class="testimonial-author">
+                                    <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80"
+                                        alt="Neelam Munir">
+                                    <div class="author-info">
+                                        <h4>NEELAM MUNIR</h4>
+                                        <p>Peshawar</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-navigation">
+                        <button class="carousel-arrow prev-arrow">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <div class="carousel-dots">
+                            <span class="dot active"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+                        <button class="carousel-arrow next-arrow">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="team animate-on-scroll">
+        <div class="team-container">
+            <div class="section-label">
+                <span class="label-line"></span>
+                <span class="label-text">OUR TEAM</span>
+            </div>
+            <h2 class="animate-on-scroll fade-in-up team-title">
+                MEET THE <span>CREATIVE</span> MINDS
+            </h2>
+            <div class="team-grid">
+                <!-- Muhammad Danyal -->
+                <div class="team-member magnetic">
+                    <div class="member-image">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+                            alt="Muhammad Danyal">
+                        <div class="member-overlay">
+                            <div class="member-role">Website Developer</div>
+                        </div>
+                    </div>
+                    <div class="member-content">
+                        <h3 class="member-name">Muhammad Danyal</h3>
+                        <p class="member-description">Full-stack web developer passionate about creating innovative
+                            digital solutions and user-friendly interfaces.</p>
+                        <div class="member-social">
+                            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                            <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hassan Zeb -->
+                <div class="team-member magnetic">
+                    <div class="member-image">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+                            alt="Hassan Zeb">
+                        <div class="member-overlay">
+                            <div class="member-role">Mobile App Developer</div>
+                        </div>
+                    </div>
+                    <div class="member-content">
+                        <h3 class="member-name">Hassan Zeb</h3>
+                        <p class="member-description">Expert mobile app developer specializing in cross-platform
+                            solutions and innovative user experiences.</p>
+                        <div class="member-social">
+                            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                            <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Yasir Ktk -->
+                <div class="team-member magnetic">
+                    <div class="member-image">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+                            alt="Yasir Ktk">
+                        <div class="member-overlay">
+                            <div class="member-role">Mobile App Developer</div>
+                        </div>
+                    </div>
+                    <div class="member-content">
+                        <h3 class="member-name">Yasir Ktk</h3>
+                        <p class="member-description">Talented app developer focused on creating seamless mobile
+                            applications with cutting-edge technology.</p>
+                        <div class="member-social">
+                            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                            <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq animate-on-scroll">
+        <div class="faq-container">
+            <div class="faq-header">
+                <div class="section-label">
+                    <span class="label-line"></span>
+                    <span class="label-text">HELP CENTER</span>
+                </div>
+                <h2 class="animate-on-scroll fade-in-up faq-title">
+                    FREQUENTLY ASKED <span>QUESTIONS</span>
+                </h2>
+                <p class="faq-subtitle">Find answers to the most common questions about E Drop services.</p>
+            </div>
+
+            <div class="faq-grid">
+                <!-- Category 1 -->
+                <div class="faq-category">
+                    <h3 class="category-title"><i class="fas fa-info-circle"></i> General Questions</h3>
+                    <div class="faq-accordion">
+                        <div class="faq-item">
+                            <button class="faq-question">
+                                What is E Drop?
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>E Drop is an integrated logistics and transport platform specifically designed for
+                                    Kohat, providing Cab, Cargo, and Shipping services in one place.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question">
+                                Is E Drop available outside of Kohat?
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Currently, we are focusing on establishing a strong foundation in Kohat, but our
+                                    vision is to expand throughout the region.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question">
+                                What makes E Drop different from other courier services?
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Unlike traditional services, E Drop offers a unified system for both passenger
+                                    transport (Cabs) and logistics (Cargo) with a focus on modern tech like real-time
+                                    tracking.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- View All FAQs Button -->
+                <div style="text-align: center; margin-top: 40px; grid-column: 1 / -1;">
+                    <a href="faq.html" class="cta-button magnetic">
+                        View All FAQs <i class="fas fa-arrow-right" style="margin-left: 8px;"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact animate-on-scroll">
+        <div class="contact-container">
+            <div class="contact-content animate-on-scroll fade-in-right">
+                <div class="contact-info">
+                    <div class="contact-illustration">
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                            alt="Contact Illustration">
+                    </div>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Phone</h4>
+                                <p>+92 321-125687</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Email</h4>
+                                <p>sachdeva@coin.sin</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Location</h4>
+                                <p>Sadar Bazar, Peshawar, Kpk</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <h2 class="animate-on-scroll fade-in-up contact-title">Get in Touch</h2>
+                    <p class="contact-subtitle">Any question or remarks? Let us know!</p>
+
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="Type your message here" rows="5"
+                                required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h3>E-DROP</h3>
+                    <p>Moving Was Never So Easy</p>
+                    <p>Fast & Secure Move</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html#home">Home</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#services">Services</a></li>
+                        <li><a href="index.html#team">Team</a></li>
+                        <li><a href="index.html#testimonials">Testimonials</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-phone"></i> +92 321-125687</p>
+                    <p><i class="fas fa-envelope"></i> sachdeva@coin.sin</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Sadar Bazar, Peshawar, Kpk</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-diagonal"></div>
+
+        <!-- Sub Footer for Legal & Extra Links -->
+        <div class="sub-footer"
+            style="background: #111; padding: 25px 20px; border-top: 1px solid #333; position: relative; z-index: 2; text-align: center;">
+            <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; margin-bottom: 12px;">
+                <a href="faq.html"
+                    style="color: #bbb; text-decoration: none; font-size: 0.95rem; transition: color 0.3s ease;"
+                    onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#bbb'">FAQ</a>
+                <a href="privacy-policy.html"
+                    style="color: #bbb; text-decoration: none; font-size: 0.95rem; transition: color 0.3s ease;"
+                    onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#bbb'">Privacy Policy</a>
+                <a href="terms-conditions.html"
+                    style="color: #bbb; text-decoration: none; font-size: 0.95rem; transition: color 0.3s ease;"
+                    onmouseover="this.style.color='#ff6b35'" onmouseout="this.style.color='#bbb'">Terms & Conditions</a>
+            </div>
+            <p style="margin: 0; font-size: 0.85rem; color: #777;">&copy; 2026 E Drop. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js?v=final_clean"></script>
+
+    <!-- Auth Modals -->
+    <div id="auth-modal" class="auth-modal">
+        <div class="auth-modal-content">
+            <span class="close-button">&times;</span>
+            <div id="auth-form-container"></div>
+        </div>
+    </div>
+    <!-- Inline auth templates (fallback when fetch is blocked) -->
+    <div id="auth-templates" style="display:none">
+        <div id="tmpl-login" class="auth-form-content">
+            <h2>LOGIN</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" name="password" placeholder="Enter your password"
+                        required>
+                </div>
+                <button type="submit" class="auth-submit-btn">Login</button>
+            </form>
+            <p>Don't have an account? <a href="#" id="show-signup">Sign Up</a></p>
+        </div>
+
+        <div id="tmpl-signup" class="auth-form-content">
+            <h2>SIGN UP</h2>
+            <form id="signup-form">
+                <div class="form-group">
+                    <label for="signup-username">Username</label>
+                    <input type="text" id="signup-username" name="username" placeholder="Enter your username" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-email">Email</label>
+                    <input type="email" id="signup-email" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-password">Password</label>
+                    <input type="password" id="signup-password" name="password" placeholder="Enter your password"
+                        required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-confirm-password">Confirm Password</label>
+                    <input type="password" id="signup-confirm-password" name="confirm-password"
+                        placeholder="Confirm your password" required>
+                </div>
+                <button type="submit" class="auth-submit-btn">Sign Up</button>
+            </form>
+            <p>Already have an account? <a href="#" id="show-login">Login</a></p>
+        </div>
+    </div>
+</body>
+
+</html>
